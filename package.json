@@ -45,13 +45,18 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "typecheck": "tsc --project ./tsconfig.json --noEmit"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   },
   "browserslist": {
     "production": [
@@ -69,7 +74,10 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "4.7.0"
+    "@capacitor/cli": "4.7.0",
+    "eslint": "8.22.0",
+    "eslint-config-react-app": "^7.0.1",
+    "prettier": "^2.8.4"
   },
   "description": "An Ionic project"
 }
