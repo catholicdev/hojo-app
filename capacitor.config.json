@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "Hojo",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
