@@ -25,7 +25,7 @@ import './theme/font.css'
 
 setupIonicReact()
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <IonApp>
       <IonReactRouter>
