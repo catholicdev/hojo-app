@@ -13,10 +13,11 @@ export const Menu = ({ bgColor }: Props) => {
       <div
         className="icon-background"
         style={{ backgroundColor: bgColor }}
-      ></div>
-      <div className="content">
+      >
         <img src={image} alt="game" />
-        <span>Game Hành Trình Kinh Thánh</span>
+      </div>
+      <div className="content">
+        Game Hành Trình Kinh Thánh
       </div>
     </button>
   )
