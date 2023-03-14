@@ -1,23 +1,25 @@
-import './Menu.scss'
-
-import image from '../../assets/game.png'
+import { CSSProperties, ReactNode } from 'react'
+import styles from './Menu.module.scss'
 
 interface Props {
   bgColor: string
+  children: ReactNode
   photo: string
+  photoStyle?: CSSProperties
 }
 
-export const Menu = ({ bgColor }: Props) => {
+export const Menu = ({ bgColor, photo, photoStyle, children }: Props) => {
   return (
-    <button className="home-menu">
+    <button className={styles.container}>
       <div
-        className="icon-background"
-        style={{ backgroundColor: bgColor }}
+        className={styles.iconBackground}
+        style={{ backgroundColor: bgColor, ...photoStyle }}
       >
-        <img src={image} alt="game" />
+        <img src={photo} alt="game" />
       </div>
-      <div className="content">
-        Game Hành Trình Kinh Thánh
+      <div className={styles.empty}></div>
+      <div className={styles.content}>
+        {children}
       </div>
     </button>
   )
