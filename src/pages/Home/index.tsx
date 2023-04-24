@@ -1,3 +1,4 @@
+import { BaseInput } from '@components/input'
 import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
 import { settingsOutline } from 'ionicons/icons'
 import React from 'react'
@@ -18,11 +19,21 @@ const Home = () => {
       <IonContent fullscreen>
         <div className={styles.page}>
           <div className={styles.content}>
-            <IonButton shape="round" color="light" className={styles.settingButton}>
+            <IonButton
+              shape="round"
+              color="light"
+              className={styles.settingButton}
+            >
               <IonIcon slot="icon-only" icon={settingsOutline}></IonIcon>
             </IonButton>
-            <br/>
-            <br/>
+            <br />
+            <BaseInput
+              value="a"
+              name="a"
+              label="Email"
+              placeholder="Email của bạn"
+            />
+            <br />
             <Menu
               bgColor="#00C2E4"
               photo={gamePhoto}
