@@ -1,5 +1,5 @@
-import { IonButton } from '@ionic/react'
 import { ComponentProps } from 'react'
+import { IonButton } from '@ionic/react'
 
 type Props = ComponentProps<typeof IonButton>
 

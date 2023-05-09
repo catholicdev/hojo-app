@@ -29,8 +29,8 @@ const OnBoarding = () => {
             </div>
             <Button
               color="light"
-              expand="block"
-              onClick={() => history.push(routes.Home)}
+              expand="full"
+              onClick={() => history.push(routes.Login)}
             >
               <b>Tiếp tục</b>
             </Button>
