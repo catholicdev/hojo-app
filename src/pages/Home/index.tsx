@@ -1,4 +1,4 @@
-import { BaseInput } from '@components/input'
+import { BaseInput, PasswordInput } from '@components/input'
 import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
 import { settingsOutline } from 'ionicons/icons'
 import React from 'react'
@@ -32,6 +32,12 @@ const Home = () => {
               name="a"
               label="Email"
               placeholder="Email của bạn"
+            />
+            <PasswordInput
+              value=""
+              name="password"
+              label="Mật khẩu"
+              helperText="Quên mật khẩu?"
             />
             <br />
             <Menu

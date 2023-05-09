@@ -76,9 +76,12 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 
   /** primary **/
+  --primary-1-400: #2277D6;
+  --primary-1-600: #0851A4;
   --primary-2-500: #00C2E4;
 
   /** grayscale **/
+  --gray-800: #1A1A1A;
   --gray-700: #333333;
   --gray-400: #858585;
   --gray-100: #E0E0E0;
