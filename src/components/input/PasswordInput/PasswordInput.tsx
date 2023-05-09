@@ -11,6 +11,7 @@ interface CustomTextInputProps {
   onChange?: (event: string | null) => void
   name: string
   label: string
+  error?: string
   helperText?: string
   onHelperTextClick?: () => void
 }
@@ -22,6 +23,7 @@ const PasswordInputComp = ({
   onChange,
   name = 'input',
   label,
+  error,
   helperText,
 }: CustomTextInputProps) => {
   const [value, setValue] = useState(initialValue)
@@ -70,6 +72,7 @@ const PasswordInputComp = ({
           <IonIcon icon={type === 'password' ? eyeOutline : eyeOffOutline} />
         </div>
       </div>
+      <div className={styles.errorContainer}>{error}</div>
     </div>
   )
 }

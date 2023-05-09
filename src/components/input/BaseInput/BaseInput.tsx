@@ -10,6 +10,7 @@ interface CustomTextInputProps {
   type?: HTMLInputTypeAttribute
   placeholder?: string
   onChange?: (event: string | null) => void
+  error?: string
   name: string
   label: string
 }
@@ -20,6 +21,7 @@ const CustomTextInputComp = ({
   type = 'text',
   placeholder,
   onChange,
+  error,
   name = 'input',
   label,
 }: CustomTextInputProps) => {
@@ -66,6 +68,7 @@ const CustomTextInputComp = ({
           </div>
         ) : null}
       </div>
+      <div className={styles.errorContainer}>{error}</div>
     </div>
   )
 }

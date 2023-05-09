@@ -79,7 +79,11 @@ http://ionicframework.com/docs/theming/ */
   --primary-1-400: #2277D6;
   --primary-1-500: #0762C8;
   --primary-1-600: #0851A4;
+  --primary-2-100: #C6F7FF;
   --primary-2-500: #00C2E4;
+
+  /** error **/
+  --error-400: #EB274B;
 
   /** grayscale **/
   --gray-900: #0A0A0A;

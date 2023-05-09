@@ -5,7 +5,7 @@ import { Button } from '@components/button'
 import { routes } from '@routes'
 
 import logoImg from './assets/logo.png'
-import titleImg from './assets/title.png'
+import { ReactComponent as AppTitle } from './assets/AppTitle.svg'
 
 import { BottomArt } from './components'
 
@@ -20,20 +20,25 @@ const OnBoarding = () => {
           <div className={styles.content}>
             <div className={styles.logoGroup}>
               <img className={styles.logo} src={logoImg} alt="Logo" />
-              <img className={styles.title} src={titleImg} alt="Logo" />
+              <AppTitle className={styles.title} />
               <br />
               <br />
               <p className={styles.subtitle}>
                 Hành trình nên Thánh 4.0 <br /> dành cho người trẻ Việt
               </p>
             </div>
-            <Button
-              color="light"
-              expand="full"
-              onClick={() => history.push(routes.Login)}
-            >
-              <b>Tiếp tục</b>
-            </Button>
+            <div className={styles.actions}>
+              <Button
+                color="primary"
+                expand="full"
+                onClick={() => history.push(routes.Login)}
+              >
+                <b>Đăng nhập</b>
+              </Button>
+              <div className={styles.secondaryActionContainer}>
+                Chưa có tài khoản? <span>Đăng ký ngay</span>
+              </div>
+            </div>
           </div>
           <BottomArt className={styles.bottom} />
         </div>
