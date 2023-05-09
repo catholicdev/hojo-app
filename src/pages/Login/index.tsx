@@ -55,7 +55,7 @@ const Login = () => {
 
           <Button
             className={styles.loginButton}
-            color="light"
+            color="primary"
             expand="full"
             onClick={() => console.log('aaa')}
           >
