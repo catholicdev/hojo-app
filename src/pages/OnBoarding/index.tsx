@@ -15,7 +15,7 @@ const OnBoarding = () => {
   const { navigate } = useContext(NavContext)
   return (
     <IonPage>
-      <IonContent fullscreen>
+      <IonContent fullscreen scrollY={false}>
         <div className={styles.page}>
           <div className={styles.content}>
             <div className={styles.logoGroup}>

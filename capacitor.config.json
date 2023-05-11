@@ -1,6 +1,11 @@
 {
-	"appId": "com.catholicdesign.hojo",
-	"appName": "Hojo",
-	"webDir": "build",
-	"bundledWebRuntime": false
+  "appId": "com.catholicdesign.hojo",
+  "appName": "Hojo",
+  "webDir": "build",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "Keyboard": {
+      "resize": "none"
+    }
+  }
 }
