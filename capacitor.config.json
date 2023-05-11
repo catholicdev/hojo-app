@@ -1,5 +1,5 @@
 {
-	"appId": "io.ionic.starter",
+	"appId": "com.catholicdesign.hojo",
 	"appName": "Hojo",
 	"webDir": "build",
 	"bundledWebRuntime": false
