@@ -6,15 +6,14 @@ import {
   IonIcon,
   NavContext,
 } from '@ionic/react'
-import { BaseInput, PasswordInput } from '@components/input'
+import { BaseInput } from '@components/input'
 
-import styles from './Login.module.scss'
+import styles from './Registration.module.scss'
 import { arrowBackOutline } from 'ionicons/icons'
 import { Button } from '@components/button'
 import { Body1 } from '@components/text'
-import { Stack } from '@components/stack'
 
-const Login = () => {
+const Registration = () => {
   const { goBack } = useContext(NavContext)
 
   return (
@@ -35,25 +34,17 @@ const Login = () => {
               ></IonIcon>
             </IonButton>
           </div>
-          <span className={styles.pageTitle}>Chào mừng trở lại,</span>
-          <Body1 component="div" className={styles.pageSubtitle}>
-            <b>Đăng nhập để tiếp tục hành trình nên Thánh cùng nhau nào!</b>
+          <span className={styles.pageTitle}>Đăng ký tài khoản</span>
+          <Body1 className={styles.pageSubtitle} component="div">
+            <b>Tạo tài khoản để tham gia hành trình nên Thánh cùng nhau nào!</b>
           </Body1>
-          <Stack className={styles.form} space={24} flexDirection="column">
-            <BaseInput
-              value=""
-              name="username"
-              label="Email"
-              placeholder="Email của bạn"
-            />
-            <PasswordInput
-              value=""
-              placeholder="Mật khẩu của bạn"
-              name="password"
-              label="Mật khẩu"
-              helperText="Quên mật khẩu?"
-            />
-          </Stack>
+          <BaseInput
+            className={styles.username}
+            value=""
+            name="username"
+            label="Email"
+            placeholder="Email của bạn"
+          />
 
           <Button
             className={styles.loginButton}
@@ -61,7 +52,7 @@ const Login = () => {
             expand="full"
             onClick={() => console.log('aaa')}
           >
-            <b>Đăng nhập</b>
+            <b>Tiếp tục</b>
           </Button>
         </div>
       </IonContent>
@@ -69,4 +60,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Registration
