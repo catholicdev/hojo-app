@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { eyeOutline, eyeOffOutline } from 'ionicons/icons'
 import React, { useRef, useState } from 'react'
 import styles from '../BaseInput.module.scss'
+import { Body1, Body2 } from '@components/text'
 
 interface CustomTextInputProps {
   className?: string
@@ -43,11 +44,13 @@ const PasswordInputComp = ({
   return (
     <div className={classNames(styles.container, className)}>
       <div className={styles.labelContainer}>
-        <span className={styles.label} onClick={handleLabelClick}>
-          {label}
-        </span>
+        <Body1 component="label" onClick={handleLabelClick}>
+          <b>{label}</b>
+        </Body1>
         {helperText ? (
-          <span className={styles.helper}>{helperText}</span>
+          <Body2 className={styles.helper}>
+            <b>{helperText}</b>
+          </Body2>
         ) : (
           <span></span>
         )}
@@ -69,10 +72,12 @@ const PasswordInputComp = ({
           placeholder={placeholder}
         />
         <div className={styles.iconButton} onClick={toggleVisibility}>
-          <IonIcon icon={type === 'password' ? eyeOutline : eyeOffOutline} />
+          <IonIcon icon={type === 'text' ? eyeOutline : eyeOffOutline} />
         </div>
       </div>
-      <div className={styles.errorContainer}>{error}</div>
+      <Body2 component="div" className={styles.errorContainer}>
+        <b>{error}</b>
+      </Body2>
     </div>
   )
 }

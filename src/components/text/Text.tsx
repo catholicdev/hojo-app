@@ -1,66 +1,29 @@
-import React, { CSSProperties, useMemo, memo } from 'react'
+import React, { memo, DOMAttributes } from 'react'
+import classNames from 'classnames'
+import styles from './Text.module.scss'
 
-interface Props {
-  fontSize: CSSProperties['fontSize']
-  lineHeight: CSSProperties['lineHeight']
-  fontWeight: number
-  classname?: string
+interface Props extends DOMAttributes<any> {
+  component?: keyof JSX.IntrinsicElements
+  className?: string
   children?: React.ReactNode
 }
-
 const Text = memo(
-  ({ classname, fontWeight, fontSize, lineHeight, children }: Props) => {
-    const styled = useMemo<CSSProperties>(
-      () => ({
-        fontSize,
-        fontWeight,
-        lineHeight,
-      }),
-      [fontSize, fontWeight, lineHeight]
-    )
-    return (
-      <span className={classname} style={styled}>
-        {children}
-      </span>
-    )
+  ({ component: Component = 'span', children, ...props }: Props) => {
+    return <Component {...props}>{children}</Component>
   }
 )
 
-interface Body1Props {
-  fontWeight?: 'bold' | 'medium' | 'regular'
-  classname?: string
-  children?: React.ReactNode
-}
-
-const WEIGHT = {
-  bold: 700,
-  medium: 500,
-  regular: 400,
-}
-
-export const Body1 = ({ classname, fontWeight, children }: Body1Props) => {
-  const weightValue = WEIGHT[fontWeight ?? 'medium']
+export const Body1 = ({ className, children, ...props }: Props) => {
   return (
-    <Text
-      classname={classname}
-      fontSize="16px"
-      lineHeight="24px"
-      fontWeight={weightValue}
-    >
+    <Text className={classNames(className, styles.body1)} {...props}>
       {children}
     </Text>
   )
 }
 
-export const Body2 = ({ classname, fontWeight, children }: Body1Props) => {
-  const weightValue = WEIGHT[fontWeight ?? 'medium']
+export const Body2 = ({ className, children, ...props }: Props) => {
   return (
-    <Text
-      classname={classname}
-      fontSize="14px"
-      lineHeight="21px"
-      fontWeight={weightValue}
-    >
+    <Text className={classNames(className, styles.body2)} {...props}>
       {children}
     </Text>
   )

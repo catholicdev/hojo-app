@@ -1,5 +1,4 @@
-import { IonContent, IonPage } from '@ionic/react'
-import { useHistory } from 'react-router'
+import { IonContent, IonPage, NavContext } from '@ionic/react'
 
 import { Button } from '@components/button'
 import { routes } from '@routes'
@@ -10,9 +9,10 @@ import { ReactComponent as AppTitle } from './assets/AppTitle.svg'
 import { BottomArt } from './components'
 
 import styles from './OnBoarding.module.scss'
+import { useContext } from 'react'
 
 const OnBoarding = () => {
-  const history = useHistory()
+  const { navigate } = useContext(NavContext)
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -31,12 +31,15 @@ const OnBoarding = () => {
               <Button
                 color="primary"
                 expand="full"
-                onClick={() => history.push(routes.Login)}
+                onClick={() => navigate(routes.Login)}
               >
                 <b>Đăng nhập</b>
               </Button>
               <div className={styles.secondaryActionContainer}>
-                Chưa có tài khoản? <span>Đăng ký ngay</span>
+                Chưa có tài khoản?{' '}
+                <span onClick={() => navigate(routes.Registration)}>
+                  Đăng ký ngay
+                </span>
               </div>
             </div>
           </div>
