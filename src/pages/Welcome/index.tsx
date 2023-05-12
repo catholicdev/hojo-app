@@ -8,10 +8,10 @@ import { ReactComponent as AppTitle } from './assets/AppTitle.svg'
 
 import { BottomArt } from './components'
 
-import styles from './OnBoarding.module.scss'
+import styles from './Welcome.module.scss'
 import { useContext } from 'react'
 
-const OnBoarding = () => {
+const Welcome = () => {
   const { navigate } = useContext(NavContext)
   return (
     <IonPage>
@@ -48,4 +48,4 @@ const OnBoarding = () => {
   )
 }
 
-export default OnBoarding
+export default Welcome

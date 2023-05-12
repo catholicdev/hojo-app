@@ -26,6 +26,7 @@ const PasswordInputComp = ({
   label,
   error,
   helperText,
+  onHelperTextClick = () => {},
 }: CustomTextInputProps) => {
   const [value, setValue] = useState(initialValue)
   const [focused, setFocused] = useState(false)
@@ -48,7 +49,7 @@ const PasswordInputComp = ({
           <b>{label}</b>
         </Body1>
         {helperText ? (
-          <Body2 className={styles.helper}>
+          <Body2 className={styles.helper} onClick={onHelperTextClick}>
             <b>{helperText}</b>
           </Body2>
         ) : (

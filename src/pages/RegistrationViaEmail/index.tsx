@@ -10,7 +10,7 @@ import { arrowBackOutline } from 'ionicons/icons'
 
 import { BaseInput, PasswordInput } from '@components/input'
 import { Button } from '@components/button'
-import { Body1 } from '@components/text'
+import { Body1, PageTitle } from '@components/text'
 import { Stack } from '@components/stack'
 import { useInfoDialog } from '@components/dialog'
 import { ReactComponent as HeavenGate } from './assets/HeavenGate.svg'
@@ -44,10 +44,12 @@ const RegistrationViaEmail = () => {
                 ></IonIcon>
               </IonButton>
             </div>
-            <span className={styles.pageTitle}>Đăng ký với email</span>
-            <Body1 className={styles.pageSubtitle} component="div">
-              <b>johnpaul@gmail.com</b>
-            </Body1>
+            <Stack className={styles.titleGroup} space={16}>
+              <PageTitle>Đăng ký với email</PageTitle>
+              <Body1 component="div">
+                <b>johnpaul@gmail.com</b>
+              </Body1>
+            </Stack>
             <Stack className={styles.form} space={24}>
               <BaseInput
                 value=""

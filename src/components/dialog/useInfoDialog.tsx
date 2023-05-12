@@ -8,14 +8,14 @@ interface Props {
   image: React.FC<any>
   message: string
   okButtonText: string
-  okButtonTextCallback?: Function
+  onOkButtonClick?: () => void
 }
 
 export const useInfoDialog = ({
   image: Image,
   message,
   okButtonText,
-  okButtonTextCallback = () => {},
+  onOkButtonClick = () => {},
 }: Props) => {
   const modal = useRef<HTMLIonModalElement>(null)
 
@@ -39,7 +39,7 @@ export const useInfoDialog = ({
             color="primary"
             expand="full"
             onClick={() => {
-              okButtonTextCallback()
+              onOkButtonClick()
               dismiss()
             }}
           >
