@@ -19,41 +19,44 @@ const Login = () => {
 
   return (
     <IonPage>
-      <IonContent fullscreen>
-        <div className={styles.page}>
-          <div className={styles.backContainer}>
-            <IonButton
-              className={styles.backButton}
-              fill="clear"
-              expand="block"
-              onClick={() => goBack()}
-            >
-              <IonIcon
-                slot="icon-only"
-                className={styles.iconBackButton}
-                icon={arrowBackOutline}
-              ></IonIcon>
-            </IonButton>
+      <IonContent fullscreen className={styles.page}>
+        <div className={styles.justifiedFlex}>
+          <div className={styles.naturalContent}>
+            <div className={styles.backContainer}>
+              <IonButton
+                className={styles.backButton}
+                fill="clear"
+                expand="block"
+                onClick={() => goBack()}
+              >
+                <IonIcon
+                  slot="icon-only"
+                  className={styles.iconBackButton}
+                  icon={arrowBackOutline}
+                ></IonIcon>
+              </IonButton>
+            </div>
+            <span className={styles.pageTitle}>Chào mừng trở lại,</span>
+            <Body1 component="div" className={styles.pageSubtitle}>
+              <b>Đăng nhập để tiếp tục hành trình nên Thánh cùng nhau nào!</b>
+            </Body1>
+            <Stack className={styles.form} space={24} flexDirection="column">
+              <BaseInput
+                type="email"
+                value=""
+                name="username"
+                label="Email"
+                placeholder="Email của bạn"
+              />
+              <PasswordInput
+                value=""
+                placeholder="Mật khẩu của bạn"
+                name="password"
+                label="Mật khẩu"
+                helperText="Quên mật khẩu?"
+              />
+            </Stack>
           </div>
-          <span className={styles.pageTitle}>Chào mừng trở lại,</span>
-          <Body1 component="div" className={styles.pageSubtitle}>
-            <b>Đăng nhập để tiếp tục hành trình nên Thánh cùng nhau nào!</b>
-          </Body1>
-          <Stack className={styles.form} space={24} flexDirection="column">
-            <BaseInput
-              value=""
-              name="username"
-              label="Email"
-              placeholder="Email của bạn"
-            />
-            <PasswordInput
-              value=""
-              placeholder="Mật khẩu của bạn"
-              name="password"
-              label="Mật khẩu"
-              helperText="Quên mật khẩu?"
-            />
-          </Stack>
 
           <Button
             className={styles.loginButton}

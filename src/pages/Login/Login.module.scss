@@ -1,11 +1,19 @@
 .page {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 60px;
-  padding-left: 24px;
-  padding-right: 24px;
+  --padding-start:  24px;
+  --padding-end:  24px;
+  --padding-top: 60px ;
+  --padding-bottom: 60px ;
+
+  .justifiedFlex {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .naturalContent {
+    width: 100%;
+  }
 
   .backContainer {
     .backButton {
@@ -37,10 +45,6 @@
   }
 
   .loginButton {
-    position: absolute;
-    bottom: 40px;
-    left: 24px;
-    right: 24px;
     width: auto;
   }
 }
