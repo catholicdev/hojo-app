@@ -1,3 +1,7 @@
 b {
   font-weight: 600!important;
 }
+
+ion-content {
+  --offset-bottom: 0px!important;
+}
