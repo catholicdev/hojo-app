@@ -12,14 +12,14 @@ import { BaseInput, PasswordInput } from '@components/input'
 import { Button } from '@components/button'
 import { Body1 } from '@components/text'
 import { Stack } from '@components/stack'
-import { useDialog } from '@components/dialog'
-import { ReactComponent as HeavenGate } from '../../assets/HeavenGate.svg'
+import { useInfoDialog } from '@components/dialog'
+import { ReactComponent as HeavenGate } from './assets/HeavenGate.svg'
 
-import styles from '../../Registration.module.scss'
+import styles from './Registration.module.scss'
 
 const RegistrationViaEmail = () => {
   const { goBack } = useContext(NavContext)
-  const { present, Modal } = useDialog({
+  const { present, Modal } = useInfoDialog({
     image: HeavenGate,
     message: 'Đăng ký thành công!',
     okButtonText: 'Tiếp tục đăng nhập',

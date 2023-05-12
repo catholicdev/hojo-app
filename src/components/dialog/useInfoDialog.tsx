@@ -8,9 +8,15 @@ interface Props {
   image: React.FC<any>
   message: string
   okButtonText: string
+  okButtonTextCallback?: Function
 }
 
-export const useDialog = ({ image: Image, message, okButtonText }: Props) => {
+export const useInfoDialog = ({
+  image: Image,
+  message,
+  okButtonText,
+  okButtonTextCallback = () => {},
+}: Props) => {
   const modal = useRef<HTMLIonModalElement>(null)
 
   const present = () => {
@@ -29,7 +35,14 @@ export const useDialog = ({ image: Image, message, okButtonText }: Props) => {
         </div>
         <div className={styles.content}>
           <div className={styles.message}>{message}</div>
-          <Button color="primary" expand="full">
+          <Button
+            color="primary"
+            expand="full"
+            onClick={() => {
+              okButtonTextCallback()
+              dismiss()
+            }}
+          >
             {okButtonText}
           </Button>
         </div>

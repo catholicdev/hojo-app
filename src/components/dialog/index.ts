@@ -1,1 +1,1 @@
-export { useDialog } from './useDialog'
+export { useInfoDialog } from './useInfoDialog'

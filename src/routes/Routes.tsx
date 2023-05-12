@@ -4,7 +4,7 @@ import Home from '../pages/Home'
 import OnBoarding from '../pages/OnBoarding'
 import Login from '../pages/Login'
 import Registration from '../pages/Registration'
-import RegistrationViaEmail from '../pages/Registration/pages/RegistrationViaEmail'
+import RegistrationViaEmail from '../pages/RegistrationViaEmail'
 
 export const routes = {
   OnBoarding: '/onboard',

@@ -1,0 +1,46 @@
+.page {
+  --padding-start: 24px;
+  --padding-end: 24px;
+  --padding-top: 60px;
+  --padding-bottom: 60px;
+
+  .justifiedFlex {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .backContainer {
+    .backButton {
+      width: fit-content;
+    }
+
+    .iconBackButton {
+      position: relative;
+      left: -20px;
+      color: var(--gray-800)
+    }
+  }
+
+  .pageTitle {
+    font-size: 32px;
+    line-height: 48px;
+    font-weight: 700;
+    color: var(--primary-1-600);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .pageSubtitle {
+    margin-bottom: 40px;
+  }
+
+  .form {
+    margin-bottom: 40px;
+  }
+
+  .loginButton {
+    width: auto;
+  }
+}
