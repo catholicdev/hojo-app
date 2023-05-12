@@ -4,12 +4,14 @@ import Home from '../pages/Home'
 import OnBoarding from '../pages/OnBoarding'
 import Login from '../pages/Login'
 import Registration from '../pages/Registration'
+import RegistrationViaEmail from '../pages/Registration/pages/RegistrationViaEmail'
 
 export const routes = {
   OnBoarding: '/onboard',
   Home: '/home',
   Login: '/login',
   Registration: '/registration',
+  RegistrationViaEmail: '/registration-via-email',
 }
 
 export const Routes = () => (
@@ -28,6 +30,9 @@ export const Routes = () => (
     </Route>
     <Route path={routes.Registration} exact={true}>
       <Registration />
+    </Route>
+    <Route path={routes.RegistrationViaEmail} exact={true}>
+      <RegistrationViaEmail />
     </Route>
     <Route render={() => <Redirect to="/" />} />
   </IonRouterOutlet>

@@ -6,22 +6,30 @@ import {
   IonIcon,
   NavContext,
 } from '@ionic/react'
-import { BaseInput, PasswordInput } from '@components/input'
-
-import styles from './Login.module.scss'
 import { arrowBackOutline } from 'ionicons/icons'
+
+import { BaseInput, PasswordInput } from '@components/input'
 import { Button } from '@components/button'
 import { Body1 } from '@components/text'
 import { Stack } from '@components/stack'
+import { useDialog } from '@components/dialog'
+import { ReactComponent as HeavenGate } from '../../assets/HeavenGate.svg'
 
-const Login = () => {
+import styles from '../../Registration.module.scss'
+
+const RegistrationViaEmail = () => {
   const { goBack } = useContext(NavContext)
+  const { present, Modal } = useDialog({
+    image: HeavenGate,
+    message: 'Đăng ký thành công!',
+    okButtonText: 'Tiếp tục đăng nhập',
+  })
 
   return (
     <IonPage>
       <IonContent fullscreen className={styles.page}>
         <div className={styles.justifiedFlex}>
-          <div className={styles.naturalContent}>
+          <div>
             <div className={styles.backContainer}>
               <IonButton
                 className={styles.backButton}
@@ -36,24 +44,28 @@ const Login = () => {
                 ></IonIcon>
               </IonButton>
             </div>
-            <span className={styles.pageTitle}>Chào mừng trở lại,</span>
-            <Body1 component="div" className={styles.pageSubtitle}>
-              <b>Đăng nhập để tiếp tục hành trình nên Thánh cùng nhau nào!</b>
+            <span className={styles.pageTitle}>Đăng ký với email</span>
+            <Body1 className={styles.pageSubtitle} component="div">
+              <b>johnpaul@gmail.com</b>
             </Body1>
             <Stack className={styles.form} space={24}>
               <BaseInput
-                type="email"
                 value=""
-                name="username"
-                label="Email"
-                placeholder="Email của bạn"
+                name="fullname"
+                label="Họ và tên"
+                placeholder="Họ và tên của bạn"
               />
               <PasswordInput
                 value=""
-                placeholder="Mật khẩu của bạn"
                 name="password"
                 label="Mật khẩu"
-                helperText="Quên mật khẩu?"
+                placeholder="Mật khẩu của bạn"
+              />
+              <PasswordInput
+                value=""
+                name="confirmPassword"
+                label="Nhập lại mật khẩu"
+                placeholder="Nhập lại mật khẩu của bạn"
               />
             </Stack>
           </div>
@@ -62,14 +74,15 @@ const Login = () => {
             className={styles.loginButton}
             color="primary"
             expand="full"
-            onClick={() => console.log('aaa')}
+            onClick={() => present()}
           >
-            <b>Đăng nhập</b>
+            <b>Đăng ký</b>
           </Button>
         </div>
+        <Modal />
       </IonContent>
     </IonPage>
   )
 }
 
-export default Login
+export default RegistrationViaEmail

@@ -12,7 +12,7 @@ const StackComp = ({
   className,
   space = 16,
   children,
-  flexDirection = 'row',
+  flexDirection = 'column',
   alignItems = 'initial',
   justifyContent = 'initial',
 }: StackProps) => {

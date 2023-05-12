@@ -12,9 +12,11 @@ import styles from './Registration.module.scss'
 import { arrowBackOutline } from 'ionicons/icons'
 import { Button } from '@components/button'
 import { Body1 } from '@components/text'
+import { routes } from '@routes'
+import { Stack } from '@components/stack'
 
 const Registration = () => {
-  const { goBack } = useContext(NavContext)
+  const { goBack, navigate } = useContext(NavContext)
 
   return (
     <IonPage>
@@ -41,21 +43,22 @@ const Registration = () => {
                 Tạo tài khoản để tham gia hành trình nên Thánh cùng nhau nào!
               </b>
             </Body1>
-            <BaseInput
-              type="email"
-              className={styles.username}
-              value=""
-              name="username"
-              label="Email"
-              placeholder="Email của bạn"
-            />
+            <Stack className={styles.form}>
+              <BaseInput
+                type="email"
+                value=""
+                name="username"
+                label="Email"
+                placeholder="Email của bạn"
+              />
+            </Stack>
           </div>
 
           <Button
             className={styles.loginButton}
             color="primary"
             expand="full"
-            onClick={() => console.log('aaa')}
+            onClick={() => navigate(routes.RegistrationViaEmail)}
           >
             <b>Tiếp tục</b>
           </Button>
