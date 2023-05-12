@@ -28,3 +28,15 @@ export const Body2 = ({ className, children, ...props }: Props) => {
     </Text>
   )
 }
+
+export const PageTitle = ({ className, children, ...props }: Props) => {
+  return (
+    <Text
+      className={classNames(className, styles.pageTitle)}
+      component="div"
+      {...props}
+    >
+      {children}
+    </Text>
+  )
+}

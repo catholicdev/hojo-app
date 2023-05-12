@@ -11,10 +11,12 @@ import { BaseInput } from '@components/input'
 import styles from './Registration.module.scss'
 import { arrowBackOutline } from 'ionicons/icons'
 import { Button } from '@components/button'
-import { Body1 } from '@components/text'
+import { Body1, PageTitle } from '@components/text'
+import { routes } from '@routes'
+import { Stack } from '@components/stack'
 
 const Registration = () => {
-  const { goBack } = useContext(NavContext)
+  const { goBack, navigate } = useContext(NavContext)
 
   return (
     <IonPage>
@@ -35,27 +37,30 @@ const Registration = () => {
                 ></IonIcon>
               </IonButton>
             </div>
-            <span className={styles.pageTitle}>Đăng ký tài khoản</span>
-            <Body1 className={styles.pageSubtitle} component="div">
-              <b>
-                Tạo tài khoản để tham gia hành trình nên Thánh cùng nhau nào!
-              </b>
-            </Body1>
-            <BaseInput
-              type="email"
-              className={styles.username}
-              value=""
-              name="username"
-              label="Email"
-              placeholder="Email của bạn"
-            />
+            <Stack className={styles.titleGroup} space={16}>
+              <PageTitle>Đăng ký tài khoản</PageTitle>
+              <Body1 component="div">
+                <b>
+                  Tạo tài khoản để tham gia hành trình nên Thánh cùng nhau nào!
+                </b>
+              </Body1>
+            </Stack>
+            <Stack className={styles.form}>
+              <BaseInput
+                type="email"
+                value=""
+                name="username"
+                label="Email"
+                placeholder="Email của bạn"
+              />
+            </Stack>
           </div>
 
           <Button
             className={styles.loginButton}
             color="primary"
             expand="full"
-            onClick={() => console.log('aaa')}
+            onClick={() => navigate(routes.RegistrationViaEmail)}
           >
             <b>Tiếp tục</b>
           </Button>
