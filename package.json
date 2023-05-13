@@ -6,6 +6,7 @@
     "@capacitor/app": "4.1.1",
     "@capacitor/core": "4.7.0",
     "@capacitor/haptics": "4.1.0",
+    "@capacitor/ios": "4.7.0",
     "@capacitor/keyboard": "4.1.1",
     "@capacitor/status-bar": "4.1.1",
     "@craco/craco": "^7.1.0",
@@ -44,8 +45,8 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build",
+    "ionic:start": "craco start",
+    "ionic:build": "craco build",
     "test": "craco test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "craco eject",
     "typecheck": "tsc --project ./tsconfig.json --noEmit"
