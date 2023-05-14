@@ -12,9 +12,20 @@ import styles from './Registration.module.scss'
 import { arrowBackOutline } from 'ionicons/icons'
 import { Button } from '@components/button'
 import { Body1 } from '@components/text'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { isUsedSelector, verifyEmail } from 'store/verify-email'
+import { AppDispatch } from 'store'
 
 const Registration = () => {
+  const dispatch = useDispatch<AppDispatch>()
+  const isUsed = useSelector(isUsedSelector)
+
   const { goBack } = useContext(NavContext)
+
+  const handleVerifyEmail = (email: string) => {
+    dispatch(verifyEmail({ email }))
+  }
 
   return (
     <IonPage>
@@ -50,7 +61,8 @@ const Registration = () => {
             className={styles.loginButton}
             color="primary"
             expand="full"
-            onClick={() => console.log('aaa')}
+            onClick={() => handleVerifyEmail('dung@gmail.com')}
+            disabled={isUsed}
           >
             <b>Tiếp tục</b>
           </Button>
