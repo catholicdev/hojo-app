@@ -1,7 +1,9 @@
 import { IonApp, setupIonicReact } from '@ionic/react'
 import { IonReactRouter } from '@ionic/react-router'
+import { Provider as ReduxProvider } from 'react-redux'
 
 import { Routes } from '@routes'
+import { store } from '@providers'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css'
@@ -28,11 +30,13 @@ setupIonicReact()
 
 const App = () => {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <Routes />
-      </IonReactRouter>
-    </IonApp>
+    <ReduxProvider store={store}>
+      <IonApp>
+        <IonReactRouter>
+          <Routes />
+        </IonReactRouter>
+      </IonApp>
+    </ReduxProvider>
   )
 }
 

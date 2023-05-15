@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import {
   IonContent,
   IonPage,
@@ -8,13 +9,18 @@ import {
 } from '@ionic/react'
 import { arrowBackOutline } from 'ionicons/icons'
 
-import { BaseInput, PasswordInput } from '@components/input'
-import { Button } from '@components/button'
-import { Body1, PageTitle } from '@components/text'
-import { Stack } from '@components/stack'
-import { useInfoDialog } from '@components/dialog'
-import { ReactComponent as HeavenGate } from './assets/HeavenGate.svg'
+import {
+  BaseInput,
+  PasswordInput,
+  Button,
+  Body1,
+  PageTitle,
+  Stack,
+  useInfoDialog,
+} from '@components'
+import { selectRegistrationEmail } from '@providers'
 
+import { ReactComponent as HeavenGate } from './assets/HeavenGate.svg'
 import styles from './Registration.module.scss'
 
 const RegistrationViaEmail = () => {
@@ -24,6 +30,7 @@ const RegistrationViaEmail = () => {
     message: 'Đăng ký thành công!',
     okButtonText: 'Tiếp tục đăng nhập',
   })
+  const email = useSelector(selectRegistrationEmail)
 
   return (
     <IonPage>
@@ -47,7 +54,7 @@ const RegistrationViaEmail = () => {
             <Stack className={styles.titleGroup} space={16}>
               <PageTitle>Đăng ký với email</PageTitle>
               <Body1 component="div">
-                <b>johnpaul@gmail.com</b>
+                <b>{email}</b>
               </Body1>
             </Stack>
             <Stack className={styles.form} space={24}>
