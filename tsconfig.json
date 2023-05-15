@@ -21,8 +21,13 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
+      "@api": ["./api/index.ts"],
+      "@api/*": ["./api/*"],
+      "@components": ["./components/index.ts"],
       "@components/*": ["./components/*"],
       "@pages/*": ["./pages/*"],
+      "@providers": ["./providers/index.ts"],
+      "@providers/*": ["./providers/*"],
       "@routes": ["./routes/index.ts"]
     }
   },

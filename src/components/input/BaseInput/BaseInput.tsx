@@ -69,7 +69,7 @@ const CustomTextInputComp = ({
           </div>
         ) : null}
       </div>
-      <Body2 component="div" className={styles.errorContainer}>
+      <Body2 component="div" color="error" className={styles.errorContainer}>
         <b>{error}</b>
       </Body2>
     </div>
