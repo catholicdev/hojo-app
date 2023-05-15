@@ -2,7 +2,7 @@ import { api } from './baseRtkqApi'
 
 export const authenticationApi = api.injectEndpoints({
   endpoints: (build) => ({
-    postVerifyEmail: build.mutation<{ isValid: boolean }, { email: string }>({
+    postVerifyEmail: build.mutation<{ isUsed: boolean }, { email: string }>({
       query: (queryArg) => ({
         url: `/user/register/verify-email`,
         method: 'POST',

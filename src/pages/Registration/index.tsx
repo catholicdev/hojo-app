@@ -36,7 +36,7 @@ const Registration = () => {
   const handleSubmitForm = async ({ email }: FormType) => {
     try {
       const data = await verifyEmail({ email }).unwrap()
-      if (data.isValid) {
+      if (!data.isUsed) {
         dispatch(setRegistrationEmail(email))
         navigate(routes.RegistrationViaEmail)
         return
@@ -88,7 +88,7 @@ const Registration = () => {
                         name={input.name}
                         value={input.value}
                         onChange={input.onChange}
-                        label="Email"
+                        label="Email *"
                         placeholder="Email của bạn"
                         error={meta.touched ? meta.error : undefined}
                       />

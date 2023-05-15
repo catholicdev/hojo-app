@@ -60,9 +60,15 @@ const RegistrationViaEmail = () => {
             <Stack className={styles.form} space={24}>
               <BaseInput
                 value=""
-                name="fullname"
-                label="Họ và tên"
-                placeholder="Họ và tên của bạn"
+                name="firstName"
+                label="Họ và đệm"
+                placeholder="Họ và đệm của bạn"
+              />
+              <BaseInput
+                value=""
+                name="lastName"
+                label="Tên"
+                placeholder="Tên của bạn"
               />
               <PasswordInput
                 value=""
