@@ -25,7 +25,7 @@ import {
 import { selectRegistrationEmail, useDispatch, setToken } from '@providers'
 import { splitFullName } from '@utils'
 
-import { ReactComponent as HeavenGate } from './assets/HeavenGate.svg'
+import { ReactComponent as HeavenGate } from '@assets/svg/HeavenGate.svg'
 import styles from './Registration.module.scss'
 
 interface FormValues {

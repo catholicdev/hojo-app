@@ -20,10 +20,12 @@ import {
   Body2,
   Stack,
   Validator,
+  useInfoDialog,
 } from '@components'
 import { useDispatch, setToken } from '@providers'
 import { routes } from '@routes'
 
+import { ReactComponent as Svg } from '@assets/svg/HeavenGateWithPigeon.svg'
 import styles from './Login.module.scss'
 
 interface FormValues {
@@ -33,6 +35,11 @@ interface FormValues {
 
 const Login = () => {
   const { goBack, navigate } = useContext(NavContext)
+  const { present, Modal } = useInfoDialog({
+    image: Svg,
+    message: 'Đăng nhập thành công!',
+    okButtonText: 'Đóng',
+  })
   const dispatch = useDispatch()
   const { Form } = withTypes<FormValues>()
   const [login] = usePostLoginMutation()
@@ -43,6 +50,7 @@ const Login = () => {
         password: values.password,
       }).unwrap()
       dispatch(setToken(accessToken))
+      present()
     } catch (e) {
       return { [FORM_ERROR]: 'Email hoặc mật khẩu không chính xác.' }
     }
@@ -112,6 +120,7 @@ const Login = () => {
             </div>
           )}
         </Form>
+        <Modal />
       </IonContent>
     </IonPage>
   )

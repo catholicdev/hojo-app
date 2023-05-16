@@ -23,6 +23,7 @@
     "paths": {
       "@api": ["./api/index.ts"],
       "@api/*": ["./api/*"],
+      "@assets/*": ["./assets/*"],
       "@components": ["./components/index.ts"],
       "@components/*": ["./components/*"],
       "@models": ["./models/index.ts"],
