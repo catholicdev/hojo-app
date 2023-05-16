@@ -23,12 +23,15 @@
     "paths": {
       "@api": ["./api/index.ts"],
       "@api/*": ["./api/*"],
+      "@assets/*": ["./assets/*"],
       "@components": ["./components/index.ts"],
       "@components/*": ["./components/*"],
+      "@models": ["./models/index.ts"],
       "@pages/*": ["./pages/*"],
       "@providers": ["./providers/index.ts"],
       "@providers/*": ["./providers/*"],
-      "@routes": ["./routes/index.ts"]
+      "@routes": ["./routes/index.ts"],
+      "@utils": ["./utils/index.ts"]
     }
   },
   "include": [

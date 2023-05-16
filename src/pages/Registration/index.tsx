@@ -7,18 +7,18 @@ import {
   NavContext,
 } from '@ionic/react'
 import { FORM_ERROR } from 'final-form'
-import { withTypes, Field } from 'react-final-form'
+import { withTypes } from 'react-final-form'
 import { arrowBackOutline } from 'ionicons/icons'
 
 import { usePostVerifyEmailMutation } from '@api'
 import {
-  BaseInput,
   Button,
   Body1,
   PageTitle,
   Stack,
-  required,
   Body2,
+  Validator,
+  BaseInputField,
 } from '@components'
 import { routes } from '@routes'
 
@@ -36,12 +36,12 @@ const Registration = () => {
   const handleSubmitForm = async ({ email }: FormType) => {
     try {
       const data = await verifyEmail({ email }).unwrap()
-      if (data.isValid) {
+      if (!data.isUsed) {
         dispatch(setRegistrationEmail(email))
         navigate(routes.RegistrationViaEmail)
         return
       } else {
-        return { [FORM_ERROR]: 'Email này đã được đăng kí.' }
+        return { email: 'Email này đã được đăng kí.' }
       }
     } catch (e) {
       return { [FORM_ERROR]: 'Đã có lỗi xảy ra. Vui lòng thử lại sau.' }
@@ -54,7 +54,7 @@ const Registration = () => {
     <IonPage>
       <IonContent fullscreen className={styles.page}>
         <Form onSubmit={handleSubmitForm}>
-          {({ handleSubmit, submitting, submitError }) => (
+          {({ handleSubmit, submitting, submitError, form }) => (
             <div className={styles.justifiedFlex}>
               <div>
                 <div className={styles.backContainer}>
@@ -81,19 +81,16 @@ const Registration = () => {
                   </Body1>
                 </Stack>
                 <Stack className={styles.form}>
-                  <Field name="email" validate={required}>
-                    {({ input, meta }) => (
-                      <BaseInput
-                        type="email"
-                        name={input.name}
-                        value={input.value}
-                        onChange={input.onChange}
-                        label="Email"
-                        placeholder="Email của bạn"
-                        error={meta.touched ? meta.error : undefined}
-                      />
+                  <BaseInputField
+                    name="email"
+                    validate={Validator.compose(
+                      Validator.required,
+                      Validator.email
                     )}
-                  </Field>
+                    type="email"
+                    label="Email"
+                    placeholder="Email của bạn"
+                  />
                 </Stack>
               </div>
 
