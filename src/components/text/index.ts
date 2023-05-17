@@ -1,1 +1,1 @@
-export { Body1, Body2 } from './Text'
+export { Body1, Body2, PageTitle } from './Text'

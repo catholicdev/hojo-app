@@ -1,0 +1,101 @@
+.default {
+  border-radius: 100px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.colorPrimary {
+  --light-color: var(--primary-2-100);
+  --main-color: var(--primary-1-400);
+  --dark-color: var(--primary-1-600);
+  --constrast-color: white;
+}
+
+.colorError {
+  --light-color: var(--ion-color-danger-tint);
+  --main-color: var(--ion-color-danger);
+  --dark-color: var(--ion-color-danger-shade);
+  --constrast-color: white;
+}
+
+.filled {
+  background-color: var(--main-color);
+  color: var(--constrast-color);
+
+  &:active {
+    background-color: var(--dark-color);
+  }
+
+  &.disabled {
+    background-color: var(--gray-100);
+    color: var(--gray-400);
+  }
+}
+
+.outlined {
+  background-color: transparent;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+
+  &:active {
+    background-color: var(--light-color);
+  }
+
+  &.disabled {
+    border-color: var(--gray-100);
+    color: var(--gray-400);
+  }
+}
+
+.text {
+  background-color: transparent;
+  color: var(--main-color);
+
+  &:active {
+    background-color: var(--light-color);
+  }
+
+  &.disabled {
+    color: var(--gray-400);
+  }
+}
+
+.displayFullWidth {
+  display: block;
+  width: 100%;
+}
+
+.buttonLarge {
+  padding: 8px 22px;
+
+  span {
+    font-size: 15px;
+    line-height: 26px;
+    font-weight: 500;
+    letter-spacing: 0.46px;
+  }
+}
+
+.buttonMedium {
+  padding: 6px 16px;
+
+  span {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+  }
+}
+
+.buttonSmall {
+  padding: 4px 10px;
+
+  span {
+    font-size: 13px;
+    line-height: 22px;
+    font-weight: 500;
+    letter-spacing: 0.46px;
+  }
+}

@@ -5,7 +5,7 @@ import React, { useRef, useState } from 'react'
 import styles from '../BaseInput.module.scss'
 import { Body1, Body2 } from '@components/text'
 
-interface CustomTextInputProps {
+export interface PasswordInputProps {
   className?: string
   value: string
   placeholder?: string
@@ -26,7 +26,8 @@ const PasswordInputComp = ({
   label,
   error,
   helperText,
-}: CustomTextInputProps) => {
+  onHelperTextClick = () => {},
+}: PasswordInputProps) => {
   const [value, setValue] = useState(initialValue)
   const [focused, setFocused] = useState(false)
   const [type, setType] = useState<'password' | 'text'>('password')
@@ -39,6 +40,7 @@ const PasswordInputComp = ({
   }
   const toggleVisibility = () => {
     setType((prev) => (prev === 'text' ? 'password' : 'text'))
+    inputRef.current?.focus()
   }
 
   return (
@@ -48,7 +50,7 @@ const PasswordInputComp = ({
           <b>{label}</b>
         </Body1>
         {helperText ? (
-          <Body2 className={styles.helper}>
+          <Body2 className={styles.helper} onClick={onHelperTextClick}>
             <b>{helperText}</b>
           </Body2>
         ) : (
@@ -75,7 +77,7 @@ const PasswordInputComp = ({
           <IonIcon icon={type === 'text' ? eyeOutline : eyeOffOutline} />
         </div>
       </div>
-      <Body2 component="div" className={styles.errorContainer}>
+      <Body2 component="div" color="error" className={styles.errorContainer}>
         <b>{error}</b>
       </Body2>
     </div>

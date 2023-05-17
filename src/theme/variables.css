@@ -91,6 +91,7 @@ http://ionicframework.com/docs/theming/ */
   --gray-700: #333333;
   --gray-400: #858585;
   --gray-100: #E0E0E0;
+  --gray-50: #F0F0F0;
 
   /** Typography **/
   --font-weight-regular: 400;
