@@ -37,7 +37,6 @@ export const useInfoDialog = ({
           <div className={styles.message}>{message}</div>
           <Button
             color="primary"
-            expand="full"
             onClick={() => {
               onOkButtonClick()
               dismiss()

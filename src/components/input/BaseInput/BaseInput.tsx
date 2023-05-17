@@ -40,6 +40,7 @@ const CustomTextInputComp = ({
   const handleClear = () => {
     setValue('')
     onChange && onChange('')
+    inputRef.current?.focus()
   }
 
   return (

@@ -40,6 +40,7 @@ const PasswordInputComp = ({
   }
   const toggleVisibility = () => {
     setType((prev) => (prev === 'text' ? 'password' : 'text'))
+    inputRef.current?.focus()
   }
 
   return (

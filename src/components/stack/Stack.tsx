@@ -5,7 +5,7 @@ interface StackProps extends DOMAttributes<any> {
   alignItems?: CSSProperties['alignItems']
   justifyContent?: CSSProperties['justifyContent']
   className?: string
-  space?: 4 | 8 | 12 | 16 | 24 | 32
+  space?: 0 | 4 | 8 | 12 | 16 | 24 | 32 | 40
 }
 
 const StackComp = ({
