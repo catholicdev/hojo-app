@@ -60,7 +60,7 @@ const Login = () => {
     <IonPage>
       <IonContent fullscreen className={styles.page}>
         <Form onSubmit={handleSubmitForm}>
-          {({ handleSubmit, submitError }) => (
+          {({ handleSubmit, submitting, submitError }) => (
             <div className={styles.justifiedFlex}>
               <div className={styles.naturalContent}>
                 <div className={styles.backContainer}>
@@ -109,10 +109,9 @@ const Login = () => {
                   <b>{submitError}</b>
                 </Body2>
                 <Button
-                  className={styles.loginButton}
                   color="primary"
-                  expand="full"
                   onClick={handleSubmit}
+                  disabled={submitting}
                 >
                   <b>Đăng nhập</b>
                 </Button>

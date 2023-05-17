@@ -71,7 +71,7 @@ const RegistrationViaEmail = () => {
     <IonPage>
       <IonContent fullscreen className={styles.page}>
         <Form onSubmit={handleSubmitForm} initialValues={{ email }}>
-          {({ handleSubmit }) => (
+          {({ handleSubmit, submitting }) => (
             <div className={styles.justifiedFlex}>
               <div>
                 <div className={styles.backContainer}>
@@ -117,12 +117,11 @@ const RegistrationViaEmail = () => {
               </div>
 
               <Button
-                className={styles.loginButton}
                 color="primary"
-                expand="full"
                 onClick={handleSubmit}
+                disabled={submitting}
               >
-                <b>Đăng ký</b>
+                Đăng ký
               </Button>
             </div>
           )}

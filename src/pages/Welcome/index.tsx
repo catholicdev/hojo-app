@@ -10,29 +10,26 @@ import { BottomArt } from './components'
 
 import styles from './Welcome.module.scss'
 import { useContext } from 'react'
+import { Stack } from '@components'
 
 const Welcome = () => {
   const { navigate } = useContext(NavContext)
   return (
     <IonPage>
-      <IonContent fullscreen className={styles.page}>
-        <div className={styles.content}>
-          <div className={styles.logoGroup}>
+      <IonContent fullscreen className={styles.page} scrollY={false}>
+        <Stack className={styles.content} justifyContent="space-between">
+          <Stack justifyContent="center">
             <img className={styles.logo} src={logoImg} alt="Logo" />
-            <AppTitle className={styles.title} />
-            <br />
-            <br />
-            <p className={styles.subtitle}>
-              Hành trình nên Thánh 4.0 <br /> dành cho người trẻ Việt
-            </p>
-          </div>
-          <div className={styles.actions}>
-            <Button
-              color="primary"
-              expand="full"
-              onClick={() => navigate(routes.Login)}
-            >
-              <b>Đăng nhập</b>
+            <Stack justifyContent="center" space={0}>
+              <AppTitle className={styles.title} />
+              <p className={styles.subtitle}>
+                Hành trình nên Thánh 4.0 <br /> dành cho người trẻ Việt
+              </p>
+            </Stack>
+          </Stack>
+          <Stack justifyContent="center">
+            <Button color="primary" onClick={() => navigate(routes.Login)}>
+              Đăng nhập
             </Button>
             <div className={styles.secondaryActionContainer}>
               Chưa có tài khoản?{' '}
@@ -40,8 +37,8 @@ const Welcome = () => {
                 Đăng ký ngay
               </span>
             </div>
-          </div>
-        </div>
+          </Stack>
+        </Stack>
         <BottomArt className={styles.bottom} />
       </IonContent>
     </IonPage>
