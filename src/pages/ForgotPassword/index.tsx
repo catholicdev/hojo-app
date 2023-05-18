@@ -53,13 +53,8 @@ const ForgotPassword = () => {
             </Stack>
           </div>
 
-          <Button
-            className={styles.loginButton}
-            color="primary"
-            expand="full"
-            onClick={() => console.log('aaa')}
-          >
-            <b>Lấy lại mật khẩu</b>
+          <Button color="primary" onClick={() => console.log('aaa')}>
+            Lấy lại mật khẩu
           </Button>
         </div>
       </IonContent>

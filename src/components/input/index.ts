@@ -1,2 +1,2 @@
-export { BaseInput } from './BaseInput'
-export { PasswordInput } from './PasswordInput'
+export * from './BaseInput'
+export * from './PasswordInput'
