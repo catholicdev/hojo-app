@@ -5,11 +5,12 @@ import React, { HTMLInputTypeAttribute, useRef, useState } from 'react'
 import styles from '../BaseInput.module.scss'
 import { Body1, Body2 } from '@components/text'
 
-interface CustomTextInputProps {
+export interface TextInputProps {
   className?: string
   value: string
   type?: HTMLInputTypeAttribute
   placeholder?: string
+  onFocus?: (event: any) => void
   onChange?: (event: string | null) => void
   error?: string
   name: string
@@ -21,11 +22,12 @@ const CustomTextInputComp = ({
   value: initialValue,
   type = 'text',
   placeholder,
+  onFocus,
   onChange,
   error,
   name = 'input',
   label,
-}: CustomTextInputProps) => {
+}: TextInputProps) => {
   const [value, setValue] = useState(initialValue)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -38,6 +40,7 @@ const CustomTextInputComp = ({
   const handleClear = () => {
     setValue('')
     onChange && onChange('')
+    inputRef.current?.focus()
   }
 
   return (
@@ -55,7 +58,10 @@ const CustomTextInputComp = ({
         <input
           ref={inputRef}
           type={type}
-          onFocus={() => setFocused(true)}
+          onFocus={(e) => {
+            setFocused(true)
+            onFocus && onFocus(e)
+          }}
           onBlur={() => setFocused(false)}
           className={styles.input}
           value={value}
@@ -69,7 +75,7 @@ const CustomTextInputComp = ({
           </div>
         ) : null}
       </div>
-      <Body2 component="div" className={styles.errorContainer}>
+      <Body2 component="div" color="error" className={styles.errorContainer}>
         <b>{error}</b>
       </Body2>
     </div>
