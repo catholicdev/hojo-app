@@ -1,0 +1,41 @@
+.page {
+  --padding-start:  24px;
+  --padding-end:  24px;
+  --padding-top: 60px ;
+  --padding-bottom: 60px ;
+
+  .justifiedFlex {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .naturalContent {
+    width: 100%;
+  }
+
+  .backContainer {
+    .backButton {
+      width: fit-content;
+    }
+
+    .iconBackButton {
+      position: relative;
+      left: -20px;
+      color: var(--gray-800)
+    }
+  }
+
+  .titleGroup {
+    margin-bottom: 40px;
+  }
+
+  .form {
+    margin-bottom: 40px;
+  }
+
+  .loginButton {
+    width: auto;
+  }
+}
