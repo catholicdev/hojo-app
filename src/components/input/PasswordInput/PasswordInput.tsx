@@ -1,13 +1,18 @@
 import React, { useRef, useState } from 'react'
 import { IonIcon } from '@ionic/react'
 import { eyeOutline, eyeOffOutline } from 'ionicons/icons'
-import { InputProps, BaseInput, EndAdornment } from '../BaseInput/BaseInput'
+import {
+  InputProps,
+  BaseInput,
+  EndAdornment,
+  InputRef,
+} from '../BaseInput/BaseInput'
 
 type PasswordInputProps = Omit<InputProps, 'type'>
 
 const PasswordInputComp = (props: PasswordInputProps) => {
   const [type, setType] = useState<'password' | 'text'>('password')
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<InputRef>(null)
 
   const toggleVisibility = () => {
     setType((prev) => (prev === 'text' ? 'password' : 'text'))

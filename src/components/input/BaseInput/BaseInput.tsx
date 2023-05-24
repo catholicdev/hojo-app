@@ -117,7 +117,7 @@ const InputComp = forwardRef<InputRef, InputProps>(
             onFocus={(e) => {
               setFocused(true)
               onFocus && onFocus(e)
-              setTimeout(() => inputRef?.current?.setSelectionRange(-1, -1), 0)
+              setTimeout(() => inputRef?.current?.setSelectionRange(-1, -1), 0) // set cursor at the last of the text
             }}
             onBlur={(e) => {
               setFocused(false)
