@@ -18,8 +18,7 @@ import {
   PageTitle,
   Stack,
   useInfoDialog,
-  BaseInputField,
-  PasswordInputField,
+  InputField,
   Validator,
 } from '@components'
 import { selectRegistrationEmail, useDispatch, setToken } from '@providers'
@@ -95,20 +94,22 @@ const RegistrationViaEmail = () => {
                   </Body1>
                 </Stack>
                 <Stack className={styles.form} space={24}>
-                  <BaseInputField
+                  <InputField
                     name="fullName"
                     validate={Validator.required}
                     label="Họ và tên"
                     placeholder="Họ và tên của bạn"
                   />
-                  <PasswordInputField
+                  <InputField
                     name="password"
+                    type="password"
                     validate={Validator.required}
                     label="Mật khẩu"
                     placeholder="Mật khẩu của bạn"
                   />
-                  <PasswordInputField
+                  <InputField
                     name="confirmPassword"
+                    type="password"
                     validate={matchPassword}
                     label="Nhập lại mật khẩu"
                     placeholder="Nhập lại mật khẩu của bạn"

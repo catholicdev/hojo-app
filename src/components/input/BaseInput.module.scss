@@ -8,12 +8,8 @@
     padding-bottom: 4px;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /** for helper **/
     align-items: flex-end;
-
-    .helper {
-      color: var(--primary-1-400);
-    }
   }
 
   .inputContainer {
@@ -52,7 +48,7 @@
       color: var(--gray-400);
     }
 
-    .iconButton {
+    .endAdornment {
       display: flex;
       padding: 0 16px;
       align-items: center;

@@ -18,7 +18,7 @@ import {
   Stack,
   Body2,
   Validator,
-  BaseInputField,
+  InputField,
 } from '@components'
 import { routes } from '@routes'
 
@@ -81,7 +81,7 @@ const Registration = () => {
                   </Body1>
                 </Stack>
                 <Stack className={styles.form}>
-                  <BaseInputField
+                  <InputField
                     name="email"
                     validate={Validator.compose(
                       Validator.required,
@@ -95,8 +95,8 @@ const Registration = () => {
               </div>
 
               <Stack space={16} alignItems="center">
-                <Body2 color="error">
-                  <b>{submitError}</b>
+                <Body2 color="error" component="b">
+                  {submitError}
                 </Body2>
                 <Button
                   color="primary"
