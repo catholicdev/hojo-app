@@ -47,7 +47,7 @@ export interface InputProps {
   helperText?: ReactNode
 }
 
-interface InputRef {
+export interface InputRef {
   focus: () => void
 }
 
@@ -117,6 +117,7 @@ const InputComp = forwardRef<InputRef, InputProps>(
             onFocus={(e) => {
               setFocused(true)
               onFocus && onFocus(e)
+              setTimeout(() => inputRef?.current?.setSelectionRange(-1, -1), 0)
             }}
             onBlur={(e) => {
               setFocused(false)
