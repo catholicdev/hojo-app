@@ -1,86 +1,35 @@
-import { IonIcon } from '@ionic/react'
-import classNames from 'classnames'
-import { eyeOutline, eyeOffOutline } from 'ionicons/icons'
 import React, { useRef, useState } from 'react'
-import styles from '../BaseInput.module.scss'
-import { Body1, Body2 } from '@components/text'
+import { IonIcon } from '@ionic/react'
+import { eyeOutline, eyeOffOutline } from 'ionicons/icons'
+import {
+  InputProps,
+  BaseInput,
+  EndAdornment,
+  InputRef,
+} from '../BaseInput/BaseInput'
 
-export interface PasswordInputProps {
-  className?: string
-  value: string
-  placeholder?: string
-  onChange?: (event: string | null) => void
-  name: string
-  label: string
-  error?: string
-  helperText?: string
-  onHelperTextClick?: () => void
-}
+type PasswordInputProps = Omit<InputProps, 'type'>
 
-const PasswordInputComp = ({
-  className = '',
-  value: initialValue,
-  placeholder,
-  onChange,
-  name = 'input',
-  label,
-  error,
-  helperText,
-  onHelperTextClick = () => {},
-}: PasswordInputProps) => {
-  const [value, setValue] = useState(initialValue)
-  const [focused, setFocused] = useState(false)
+const PasswordInputComp = (props: PasswordInputProps) => {
   const [type, setType] = useState<'password' | 'text'>('password')
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<InputRef>(null)
 
-  const handleLabelClick = () => inputRef?.current?.focus()
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
-    onChange && onChange(e.target.value)
-  }
   const toggleVisibility = () => {
     setType((prev) => (prev === 'text' ? 'password' : 'text'))
     inputRef.current?.focus()
   }
 
   return (
-    <div className={classNames(styles.container, className)}>
-      <div className={styles.labelContainer}>
-        <Body1 component="label" onClick={handleLabelClick}>
-          <b>{label}</b>
-        </Body1>
-        {helperText ? (
-          <Body2 className={styles.helper} onClick={onHelperTextClick}>
-            <b>{helperText}</b>
-          </Body2>
-        ) : (
-          <span></span>
-        )}
-      </div>
-      <div
-        className={classNames(styles.inputContainer, {
-          [styles.focused]: focused,
-        })}
-      >
-        <input
-          ref={inputRef}
-          type={type}
-          onFocus={() => setFocused(true)}
-          onBlur={() => setFocused(false)}
-          className={styles.input}
-          value={value}
-          name={name}
-          onChange={handleChange}
-          placeholder={placeholder}
-        />
-        <div className={styles.iconButton} onClick={toggleVisibility}>
+    <BaseInput
+      {...props}
+      ref={inputRef}
+      type={type}
+      endAdornment={
+        <EndAdornment onClick={toggleVisibility}>
           <IonIcon icon={type === 'text' ? eyeOutline : eyeOffOutline} />
-        </div>
-      </div>
-      <Body2 component="div" color="error" className={styles.errorContainer}>
-        <b>{error}</b>
-      </Body2>
-    </div>
+        </EndAdornment>
+      }
+    />
   )
 }
 
