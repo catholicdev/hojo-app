@@ -3,9 +3,5 @@
   "appName": "Hojo",
   "webDir": "build",
   "bundledWebRuntime": false,
-  "plugins": {
-    "Keyboard": {
-      "resize": "body"
-    }
-  }
+  "plugins": {}
 }
