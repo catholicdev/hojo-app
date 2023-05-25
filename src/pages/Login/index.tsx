@@ -121,7 +121,7 @@ const Login = () => {
                 <Button
                   color="primary"
                   onClick={handleSubmit}
-                  disabled={submitting}
+                  loading={submitting}
                 >
                   <b>Đăng nhập</b>
                 </Button>
