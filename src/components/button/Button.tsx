@@ -8,6 +8,7 @@ interface Props {
   color?: 'primary' | 'success' | 'error'
   component?: keyof JSX.IntrinsicElements
   disabled?: boolean
+  loading?: boolean
   fullWidth?: boolean
   href?: string
   size?: 'small' | 'medium' | 'large'
@@ -22,6 +23,7 @@ export const Button = ({
   children,
   component: Component = 'button',
   disabled,
+  loading,
   fullWidth = true,
   size = 'large',
   color = 'primary',
@@ -67,14 +69,15 @@ export const Button = ({
         colorStyle,
         variantStyle,
         {
-          [styles.disabled]: disabled,
+          [styles.loading]: loading,
+          [styles.disabled]: disabled || loading,
           [styles.displayFullWidth]: fullWidth,
         }
       )}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || loading}
     >
-      <span>{children}</span>
+      <span>{loading ? '‎' : children}</span>
     </Component>
   )
 }
