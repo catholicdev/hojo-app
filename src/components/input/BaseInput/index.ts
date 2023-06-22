@@ -1,2 +1,2 @@
 export { BaseInput } from './BaseInput'
-export { BaseInputField } from './BaseInputField'
+export type { InputRef, InputProps } from './BaseInput'

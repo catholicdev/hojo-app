@@ -1,28 +1,30 @@
 import React from 'react'
 import { Field } from 'react-final-form'
-import { PasswordInputProps, PasswordInput } from './PasswordInput'
+import { InputProps, BaseInput } from '../../input/BaseInput/BaseInput'
+import { PasswordInput } from '@components/input'
 
 export type InputFieldProps = React.ComponentProps<typeof Field> &
-  Omit<
-    PasswordInputProps,
-    'error' | 'value' | 'onBlur' | 'onChange' | 'onFocus'
-  >
+  Omit<InputProps, 'error' | 'value' | 'onBlur' | 'onChange' | 'onFocus'>
 
-export const PasswordInputField = ({
+export const InputField = ({
   name,
   validate,
-  label,
-  placeholder,
+  type,
+  ...props
 }: InputFieldProps) => {
+  const InputComponent = type === 'password' ? PasswordInput : BaseInput
+
   return (
     <Field<any> name={name} validate={validate}>
       {({ input, meta }) => (
-        <PasswordInput
+        <InputComponent
+          {...props}
+          type={type}
           name={input.name}
           value={input.value}
+          onFocus={input.onFocus}
+          onBlur={input.onBlur}
           onChange={input.onChange}
-          label={label}
-          placeholder={placeholder}
           error={
             meta.touched && !meta.dirtySinceLastSubmit
               ? meta.error || meta.submitError

@@ -12,8 +12,7 @@ import { arrowBackOutline } from 'ionicons/icons'
 
 import { usePostLoginMutation } from '@api'
 import {
-  BaseInputField,
-  PasswordInputField,
+  InputField,
   Button,
   Body1,
   PageTitle,
@@ -86,32 +85,43 @@ const Login = () => {
                   </Body1>
                 </Stack>
                 <Stack className={styles.form} space={24}>
-                  <BaseInputField
+                  <InputField
                     name="email"
-                    validate={Validator.required}
                     type="email"
+                    validate={Validator.compose(
+                      Validator.required,
+                      Validator.email
+                    )}
                     label="Email"
                     placeholder="Email của bạn"
                   />
-                  <PasswordInputField
+                  <InputField
                     name="password"
+                    type="password"
                     validate={Validator.required}
                     label="Mật khẩu"
                     placeholder="Mật khẩu của bạn"
-                    helperText="Quên mật khẩu?"
-                    onHelperTextClick={() => navigate(routes.ForgotPassword)}
+                    helperText={
+                      <Body2
+                        component="b"
+                        color="primary"
+                        onClick={() => navigate(routes.ForgotPassword)}
+                      >
+                        Quên mật khẩu?
+                      </Body2>
+                    }
                   />
                 </Stack>
               </div>
 
               <Stack space={16} alignItems="center">
-                <Body2 color="error">
-                  <b>{submitError}</b>
+                <Body2 color="error" component="b">
+                  {submitError}
                 </Body2>
                 <Button
                   color="primary"
                   onClick={handleSubmit}
-                  disabled={submitting}
+                  loading={submitting}
                 >
                   <b>Đăng nhập</b>
                 </Button>
