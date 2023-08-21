@@ -99,7 +99,7 @@ const Registration = () => {
                   {submitError}
                 </Body2>
                 <Button
-                  color="primary"
+                  color="secondary"
                   disabled={submitting}
                   onClick={handleSubmit}
                 >
