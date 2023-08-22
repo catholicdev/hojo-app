@@ -11,6 +11,15 @@
   --main-color: var(--primary-1-400);
   --dark-color: var(--primary-1-600);
   --constrast-color: white;
+  --shadow-color: #087bac;
+}
+
+.colorSecondary {
+  --light-color: var(--primary-2-100);
+  --main-color: var(--secondary-1-400);
+  --dark-color: var(--primary-1-600);
+  --constrast-color: #11b0f4;
+  --shadow-color: #0a96d2;
 }
 
 .colorError {
@@ -23,6 +32,7 @@
 .filled {
   background-color: var(--main-color);
   color: var(--constrast-color);
+  box-shadow: 0 4px 0 0 var(--shadow-color);
 
   &:active {
     background-color: var(--dark-color);
@@ -31,6 +41,7 @@
   &.disabled {
     background-color: var(--gray-100);
     color: var(--gray-400);
+    box-shadow: 0 4px 0 0 #8c8c8c;
   }
 }
 
