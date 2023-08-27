@@ -11,7 +11,7 @@
   --main-color: var(--primary-1-400);
   --dark-color: var(--primary-1-600);
   --constrast-color: white;
-  --shadow-color: #087bac;
+  --shadow-color: var(--shadow-1-400);
 }
 
 .colorSecondary {
@@ -19,7 +19,7 @@
   --main-color: var(--secondary-1-400);
   --dark-color: var(--primary-1-600);
   --constrast-color: #11b0f4;
-  --shadow-color: #0a96d2;
+  --shadow-color: var(--shadow-2-400);
 }
 
 .colorError {
