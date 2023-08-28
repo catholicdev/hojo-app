@@ -103,7 +103,7 @@ const Registration = () => {
                   disabled={submitting}
                   onClick={handleSubmit}
                 >
-                  Tiếp tục
+                  <b>Đăng kí</b>
                 </Button>
               </Stack>
             </div>
