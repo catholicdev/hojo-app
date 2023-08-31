@@ -1,5 +1,6 @@
 export interface AuthenticationResp {
-  accessToken: string
+  idToken: string
+  refreshToken: string
 }
 
 export interface LoginReq {

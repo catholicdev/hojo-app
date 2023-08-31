@@ -19,14 +19,15 @@ import {
   Body2,
   Stack,
   Validator,
-  useInfoDialog,
+  // useInfoDialog,
 } from '@components'
 import { useDispatch, setToken } from '@providers'
 import { routes } from '@routes'
 
-import { ReactComponent as Svg } from '@assets/svg/HeavenGateWithPigeon.svg'
+// import { ReactComponent as Svg } from '@assets/svg/HeavenGateWithPigeon.svg'
 import styles from './Login.module.scss'
 import { BottomArt } from './components'
+import { setRefreshToken } from '@providers/userInfo/actions'
 
 interface FormValues {
   email: string
@@ -35,22 +36,23 @@ interface FormValues {
 
 const Login = () => {
   const { goBack, navigate } = useContext(NavContext)
-  const { present, Modal } = useInfoDialog({
-    image: Svg,
-    message: 'Đăng nhập thành công!',
-    okButtonText: 'Đóng',
-  })
+  // const { present, Modal } = useInfoDialog({
+  //   image: Svg,
+  //   message: 'Đăng nhập thành công!',
+  //   okButtonText: 'Đóng',
+  // })
   const dispatch = useDispatch()
   const { Form } = withTypes<FormValues>()
   const [login] = usePostLoginMutation()
   const handleSubmitForm = async (values: FormValues) => {
     try {
-      const { accessToken } = await login({
+      const { idToken, refreshToken } = await login({
         email: values.email,
         password: values.password,
       }).unwrap()
-      dispatch(setToken(accessToken))
-      present()
+      dispatch(setToken(idToken))
+      dispatch(setRefreshToken(refreshToken))
+      navigate(routes.Home)
     } catch (e) {
       return { [FORM_ERROR]: 'Email hoặc mật khẩu không chính xác.' }
     }
@@ -129,8 +131,7 @@ const Login = () => {
             </div>
           )}
         </Form>
-
-        <Modal />
+        {/*<Modal />*/}
       </IonContent>
       <BottomArt className={styles.bottom} />
     </IonPage>

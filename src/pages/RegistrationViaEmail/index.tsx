@@ -17,16 +17,18 @@ import {
   Body1,
   PageTitle,
   Stack,
-  useInfoDialog,
+  // useInfoDialog,
   InputField,
   Validator,
 } from '@components'
 import { selectRegistrationEmail, useDispatch, setToken } from '@providers'
 import { splitFullName } from '@utils'
 
-import { ReactComponent as HeavenGate } from '@assets/svg/HeavenGate.svg'
+// import { ReactComponent as HeavenGate } from '@assets/svg/HeavenGate.svg'
 import styles from './Registration.module.scss'
 import { BottomArt } from '@pages/RegistrationViaEmail/components'
+import { setRefreshToken } from '@providers/userInfo/actions'
+import { routes } from '@routes'
 
 interface FormValues {
   email: string
@@ -41,12 +43,12 @@ const matchPassword: FieldValidator<any> = (value, allValues) =>
     : 'Nhập lại mật khẩu không khớp.'
 
 const RegistrationViaEmail = () => {
-  const { goBack } = useContext(NavContext)
-  const { present, Modal } = useInfoDialog({
-    image: HeavenGate,
-    message: 'Đăng ký thành công!',
-    okButtonText: 'Tiếp tục đăng nhập',
-  })
+  const { goBack, navigate } = useContext(NavContext)
+  // const {  Modal } = useInfoDialog({
+  //   image: HeavenGate,
+  //   message: 'Đăng ký thành công!',
+  //   okButtonText: 'Tiếp tục đăng nhập',
+  // })
   const dispatch = useDispatch()
   const email = useSelector(selectRegistrationEmail)
   const [register] = usePostRegisterMutation()
@@ -56,14 +58,15 @@ const RegistrationViaEmail = () => {
     const { firstName, lastName } = splitFullName(values.fullName)
 
     try {
-      const { accessToken } = await register({
+      const { idToken, refreshToken } = await register({
         email: values.email,
         lastName,
         firstName,
         password: values.password,
       }).unwrap()
-      dispatch(setToken(accessToken))
-      present()
+      dispatch(setToken(idToken))
+      dispatch(setRefreshToken(refreshToken))
+      navigate(routes.Home)
     } catch (e) {}
   }
 
@@ -127,7 +130,7 @@ const RegistrationViaEmail = () => {
             </div>
           )}
         </Form>
-        <Modal />
+        {/*<Modal />*/}
       </IonContent>
       <BottomArt className={styles.bottom} />
     </IonPage>
