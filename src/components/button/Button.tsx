@@ -62,6 +62,7 @@ export const Button = ({
         return styles.buttonMedium
     }
   }, [size])
+
   return (
     <Component
       className={classNames(

@@ -19,13 +19,14 @@ const Welcome = () => {
       <IonContent fullscreen className={styles.page} scrollY={false}>
         <Stack className={styles.content} justifyContent="space-between">
           <Stack justifyContent="center">
-            <img className={styles.logo} src={logoImg} alt="Logo" />
             <Stack justifyContent="center" space={0}>
-              <AppTitle className={styles.title} />
+              <p className={styles.title}>HOLY JOURNEY</p>
               <p className={styles.subtitle}>
-                Hành trình nên Thánh 4.0 <br /> dành cho người trẻ Việt
+                Hành trình nên Thánh dành cho <br /> thanh thiếu niên và thiếu
+                nhi
               </p>
             </Stack>
+            <img className={styles.logo} src={logoImg} alt="Logo" />
           </Stack>
           <Stack justifyContent="center">
             <Button color="primary" onClick={() => navigate(routes.Login)}>
@@ -33,9 +34,7 @@ const Welcome = () => {
             </Button>
             <div className={styles.secondaryActionContainer}>
               Chưa có tài khoản?{' '}
-              <span onClick={() => navigate(routes.Registration)}>
-                Đăng ký ngay
-              </span>
+              <span onClick={() => navigate(routes.Registration)}>Đăng ký</span>
             </div>
           </Stack>
         </Stack>
