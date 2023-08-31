@@ -4,7 +4,6 @@ import { Button } from '@components/button'
 import { routes } from '@routes'
 
 import logoImg from './assets/logo.png'
-import { ReactComponent as AppTitle } from './assets/AppTitle.svg'
 
 import { BottomArt } from './components'
 
