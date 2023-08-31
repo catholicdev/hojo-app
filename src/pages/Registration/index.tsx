@@ -99,11 +99,11 @@ const Registration = () => {
                   {submitError}
                 </Body2>
                 <Button
-                  color="primary"
+                  color="secondary"
                   disabled={submitting}
                   onClick={handleSubmit}
                 >
-                  Tiếp tục
+                  <b>Đăng kí</b>
                 </Button>
               </Stack>
             </div>

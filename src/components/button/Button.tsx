@@ -5,7 +5,7 @@ import styles from './Button.module.scss'
 interface Props {
   children?: ReactNode
   className?: string
-  color?: 'primary' | 'success' | 'error'
+  color?: 'primary' | 'success' | 'secondary' | 'error'
   component?: keyof JSX.IntrinsicElements
   disabled?: boolean
   loading?: boolean
@@ -34,6 +34,8 @@ export const Button = ({
     switch (color) {
       case 'error':
         return styles.colorError
+      case 'secondary':
+        return styles.colorSecondary
       default:
         return styles.colorPrimary
     }
@@ -60,6 +62,7 @@ export const Button = ({
         return styles.buttonMedium
     }
   }, [size])
+
   return (
     <Component
       className={classNames(
