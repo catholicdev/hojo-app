@@ -29,6 +29,7 @@ import styles from './Registration.module.scss'
 import { BottomArt } from '@pages/RegistrationViaEmail/components'
 import { setRefreshToken } from '@providers/userInfo/actions'
 import { routes } from '@routes'
+import { AuthenticationResp } from '@models'
 
 interface FormValues {
   email: string
@@ -58,14 +59,17 @@ const RegistrationViaEmail = () => {
     const { firstName, lastName } = splitFullName(values.fullName)
 
     try {
-      const { idToken, refreshToken } = await register({
-        email: values.email,
-        lastName,
-        firstName,
-        password: values.password,
-      }).unwrap()
-      dispatch(setToken(idToken))
-      dispatch(setRefreshToken(refreshToken))
+      const result = (
+        await register({
+          email: values.email,
+          lastName,
+          firstName,
+          password: values.password,
+        }).unwrap()
+      ).data as AuthenticationResp
+
+      dispatch(setToken(result.idToken))
+      dispatch(setRefreshToken(result.refreshToken))
       navigate(routes.Home)
     } catch (e) {}
   }
