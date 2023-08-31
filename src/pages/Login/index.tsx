@@ -24,7 +24,7 @@ import {
 import { useDispatch, setToken } from '@providers'
 import { routes } from '@routes'
 
-import { ReactComponent as Svg } from '@assets/svg/HeavenGateWithPigeon.svg'
+// import { ReactComponent as Svg } from '@assets/svg/HeavenGateWithPigeon.svg'
 import styles from './Login.module.scss'
 import { BottomArt } from './components'
 import { setRefreshToken } from '@providers/userInfo/actions'
