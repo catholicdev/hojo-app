@@ -27,7 +27,7 @@ const Welcome = () => {
             </Stack>
             <img className={styles.logo} src={logoImg} alt="Logo" />
           </Stack>
-          <Stack justifyContent="center">
+          <Stack justifyContent="center" space={24}>
             <Button color="primary" onClick={() => navigate(routes.Login)}>
               Đăng nhập
             </Button>

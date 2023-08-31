@@ -122,7 +122,7 @@ const Login = () => {
                     onClick={handleSubmit}
                     loading={submitting}
                   >
-                    <b>Đăng nhập</b>
+                    Đăng nhập
                   </Button>
                 </Stack>
               </div>
