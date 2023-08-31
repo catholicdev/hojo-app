@@ -1,29 +1,28 @@
 import { api } from './baseRtkqApi'
 import {
-  AuthenticationResp,
   LoginReq,
-  VerifyEmailResp,
   VerifyEmailReq,
   RegisterReq,
+  BaseResponseInterface,
 } from '@models'
 
 export const authenticationApi = api.injectEndpoints({
   endpoints: (build) => ({
-    postLogin: build.mutation<AuthenticationResp, LoginReq>({
+    postLogin: build.mutation<BaseResponseInterface, LoginReq>({
       query: (queryArg) => ({
         url: `/user/app/login`,
         method: 'POST',
         body: queryArg,
       }),
     }),
-    postVerifyEmail: build.mutation<VerifyEmailResp, VerifyEmailReq>({
+    postVerifyEmail: build.mutation<BaseResponseInterface, VerifyEmailReq>({
       query: (queryArg) => ({
         url: `/user/register/verify-email`,
         method: 'POST',
         body: queryArg,
       }),
     }),
-    postRegister: build.mutation<AuthenticationResp, RegisterReq>({
+    postRegister: build.mutation<BaseResponseInterface, RegisterReq>({
       query: (queryArg) => ({
         url: `/user/app/register`,
         method: 'POST',

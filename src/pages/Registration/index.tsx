@@ -25,6 +25,7 @@ import { routes } from '@routes'
 import styles from './Registration.module.scss'
 import { useDispatch, setRegistrationEmail } from '@providers'
 import { BottomArt } from '@pages/Registration/components'
+import { VerifyEmailResp } from '@models'
 
 interface FormType {
   email: string
@@ -36,8 +37,13 @@ const Registration = () => {
   const [verifyEmail] = usePostVerifyEmailMutation()
   const handleSubmitForm = async ({ email }: FormType) => {
     try {
-      const data = await verifyEmail({ email }).unwrap()
-      if (!data.isUsed) {
+      const result = (
+        await verifyEmail({
+          email,
+        }).unwrap()
+      ).data as VerifyEmailResp
+
+      if (!result.isUsed) {
         dispatch(setRegistrationEmail(email))
         navigate(routes.RegistrationViaEmail)
         return

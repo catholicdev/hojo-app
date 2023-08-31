@@ -28,6 +28,7 @@ import { routes } from '@routes'
 import styles from './Login.module.scss'
 import { BottomArt } from './components'
 import { setRefreshToken } from '@providers/userInfo/actions'
+import { AuthenticationResp } from '@models'
 
 interface FormValues {
   email: string
@@ -46,12 +47,15 @@ const Login = () => {
   const [login] = usePostLoginMutation()
   const handleSubmitForm = async (values: FormValues) => {
     try {
-      const { idToken, refreshToken } = await login({
-        email: values.email,
-        password: values.password,
-      }).unwrap()
-      dispatch(setToken(idToken))
-      dispatch(setRefreshToken(refreshToken))
+      const result = (
+        await login({
+          email: values.email,
+          password: values.password,
+        }).unwrap()
+      ).data as AuthenticationResp
+
+      dispatch(setToken(result.idToken))
+      dispatch(setRefreshToken(result.refreshToken))
       navigate(routes.Home)
     } catch (e) {
       return { [FORM_ERROR]: 'Email hoặc mật khẩu không chính xác.' }
