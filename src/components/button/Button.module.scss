@@ -14,6 +14,15 @@
   --shadow-color: #087bac;
 }
 
+.colorSecondary {
+  --light-color: var(--secondary-1-100);
+  --main-color: var(--secondary-1-400);
+  --dark-color: var(--secondary-1-800);
+  --constrast-color: var(--secondary-1-constrast-color);
+  --shadow-color: #087bac;
+  border: 1px solid var(--constrast-color);
+}
+
 .colorError {
   --light-color: var(--ion-color-danger-tint);
   --main-color: var(--ion-color-danger);

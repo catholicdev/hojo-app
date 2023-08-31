@@ -83,7 +83,10 @@ http://ionicframework.com/docs/theming/ */
   --primary-2-500: #00C2E4;
 
   /** secondary **/
+  --secondary-1-800: #9bdef8;
   --secondary-1-400: #E0F5FE;
+  --secondary-1-100: #ecf7fd;
+  --secondary-1-constrast-color: #11B0F4;
 
   /** shadow **/
   --shadow-1-400: #087bac;
