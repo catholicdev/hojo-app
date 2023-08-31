@@ -6,7 +6,7 @@ interface Props extends DOMAttributes<any> {
   component?: keyof JSX.IntrinsicElements
   className?: string
   children?: React.ReactNode
-  color?: 'primary' | 'error'
+  color?: 'primary' | 'error' | 'default' | 'gray'
 }
 const Text = memo(
   ({
@@ -22,10 +22,13 @@ const Text = memo(
           return styles.colorPrimary
         case 'error':
           return styles.colorError
+        case 'default':
+          return styles.colorDefault
         default:
-          return
+          return styles.colorGray
       }
     }, [color])
+
     return (
       <Component className={classNames(className, colorClassName)} {...props}>
         {children}
@@ -34,9 +37,13 @@ const Text = memo(
   }
 )
 
-export const Body1 = ({ className, children, ...props }: Props) => {
+export const Body1 = ({ className, children, color, ...props }: Props) => {
   return (
-    <Text className={classNames(className, styles.body1)} {...props}>
+    <Text
+      className={classNames(className, styles.body1)}
+      color={color || 'default'}
+      {...props}
+    >
       {children}
     </Text>
   )
@@ -55,7 +62,7 @@ export const PageTitle = ({ className, children, ...props }: Props) => {
     <Text
       className={classNames(className, styles.pageTitle)}
       component="div"
-      color="primary"
+      color="default"
       {...props}
     >
       {children}

@@ -45,6 +45,7 @@ export interface InputProps {
   label: string
   endAdornment?: ReactNode
   helperText?: ReactNode
+  color?: string | undefined
 }
 
 export interface InputRef {
@@ -66,6 +67,7 @@ const InputComp = forwardRef<InputRef, InputProps>(
       label,
       endAdornment,
       helperText,
+      color,
     }: InputProps,
     ref
   ) => {

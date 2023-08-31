@@ -26,6 +26,7 @@ import { routes } from '@routes'
 
 import { ReactComponent as Svg } from '@assets/svg/HeavenGateWithPigeon.svg'
 import styles from './Login.module.scss'
+import { BottomArt } from './components'
 
 interface FormValues {
   email: string
@@ -77,11 +78,11 @@ const Login = () => {
                   </IonButton>
                 </div>
                 <Stack className={styles.titleGroup} space={16}>
-                  <PageTitle>Chào mừng trở lại,</PageTitle>
-                  <Body1 component="div">
-                    <b>
-                      Đăng nhập để tiếp tục hành trình nên Thánh cùng nhau nào!
-                    </b>
+                  <PageTitle>ĐĂNG NHẬP</PageTitle>
+                  <Body1 component="div" color="gray">
+                    Đăng nhập tài khoản của bạn để tiếp tục
+                    <br />
+                    hành trình nên Thánh với HOJO
                   </Body1>
                 </Stack>
                 <Stack className={styles.form} space={24}>
@@ -112,25 +113,26 @@ const Login = () => {
                     }
                   />
                 </Stack>
+                <Stack space={16} alignItems="center">
+                  <Body2 color="error" component="b">
+                    {submitError}
+                  </Body2>
+                  <Button
+                    color="primary"
+                    onClick={handleSubmit}
+                    loading={submitting}
+                  >
+                    <b>Đăng nhập</b>
+                  </Button>
+                </Stack>
               </div>
-
-              <Stack space={16} alignItems="center">
-                <Body2 color="error" component="b">
-                  {submitError}
-                </Body2>
-                <Button
-                  color="primary"
-                  onClick={handleSubmit}
-                  loading={submitting}
-                >
-                  <b>Đăng nhập</b>
-                </Button>
-              </Stack>
             </div>
           )}
         </Form>
+
         <Modal />
       </IonContent>
+      <BottomArt className={styles.bottom} />
     </IonPage>
   )
 }
