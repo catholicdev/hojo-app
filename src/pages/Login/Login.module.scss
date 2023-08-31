@@ -1,8 +1,8 @@
 .page {
-  --padding-start:  24px;
-  --padding-end:  24px;
-  --padding-top: 60px ;
-  --padding-bottom: 60px ;
+  --padding-start: 24px;
+  --padding-end: 24px;
+  --padding-top: 30px;
+  --padding-bottom: 60px;
 
   .justifiedFlex {
     height: 100%;
@@ -29,9 +29,16 @@
 
   .titleGroup {
     margin-bottom: 40px;
+    text-align: center;
   }
 
   .form {
     margin-bottom: 40px;
+  }
+
+  .bottom {
+    background-color: transparent;
+    position: fixed;
+    bottom: 0;
   }
 }
