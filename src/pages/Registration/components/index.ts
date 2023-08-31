@@ -1,0 +1,1 @@
+export { BottomArt } from './BottomArt'

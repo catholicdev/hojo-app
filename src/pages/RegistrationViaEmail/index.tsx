@@ -26,6 +26,7 @@ import { splitFullName } from '@utils'
 
 import { ReactComponent as HeavenGate } from '@assets/svg/HeavenGate.svg'
 import styles from './Registration.module.scss'
+import { BottomArt } from '@pages/RegistrationViaEmail/components'
 
 interface FormValues {
   email: string
@@ -89,7 +90,7 @@ const RegistrationViaEmail = () => {
                 </div>
                 <Stack className={styles.titleGroup} space={16}>
                   <PageTitle>Đăng ký với email</PageTitle>
-                  <Body1 component="div">
+                  <Body1 component="div" color="gray">
                     <b>{email}</b>
                   </Body1>
                 </Stack>
@@ -115,20 +116,20 @@ const RegistrationViaEmail = () => {
                     placeholder="Nhập lại mật khẩu của bạn"
                   />
                 </Stack>
+                <Button
+                  color="secondary"
+                  onClick={handleSubmit}
+                  disabled={submitting}
+                >
+                  Đăng ký
+                </Button>
               </div>
-
-              <Button
-                color="primary"
-                onClick={handleSubmit}
-                disabled={submitting}
-              >
-                Đăng ký
-              </Button>
             </div>
           )}
         </Form>
         <Modal />
       </IonContent>
+      <BottomArt className={styles.bottom} />
     </IonPage>
   )
 }

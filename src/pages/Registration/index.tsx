@@ -24,6 +24,7 @@ import { routes } from '@routes'
 
 import styles from './Registration.module.scss'
 import { useDispatch, setRegistrationEmail } from '@providers'
+import { BottomArt } from '@pages/Registration/components'
 
 interface FormType {
   email: string
@@ -72,12 +73,11 @@ const Registration = () => {
                   </IonButton>
                 </div>
                 <Stack className={styles.titleGroup} space={16}>
-                  <PageTitle>Đăng ký tài khoản</PageTitle>
-                  <Body1 component="div">
-                    <b>
-                      Tạo tài khoản để tham gia hành trình nên Thánh cùng nhau
-                      nào!
-                    </b>
+                  <PageTitle>Đăng ký</PageTitle>
+                  <Body1 component="div" color="gray">
+                    Tạo tài khoản của bạn để bắt đầu
+                    <br />
+                    hành trình nên Thánh với HOJO
                   </Body1>
                 </Stack>
                 <Stack className={styles.form}>
@@ -92,24 +92,24 @@ const Registration = () => {
                     placeholder="Email của bạn"
                   />
                 </Stack>
+                <Stack space={16} alignItems="center">
+                  <Body2 color="error" component="b">
+                    {submitError}
+                  </Body2>
+                  <Button
+                    color="secondary"
+                    disabled={submitting}
+                    onClick={handleSubmit}
+                  >
+                    Tiếp tục
+                  </Button>
+                </Stack>
               </div>
-
-              <Stack space={16} alignItems="center">
-                <Body2 color="error" component="b">
-                  {submitError}
-                </Body2>
-                <Button
-                  color="secondary"
-                  disabled={submitting}
-                  onClick={handleSubmit}
-                >
-                  <b>Đăng kí</b>
-                </Button>
-              </Stack>
             </div>
           )}
         </Form>
       </IonContent>
+      <BottomArt className={styles.bottom} />
     </IonPage>
   )
 }
