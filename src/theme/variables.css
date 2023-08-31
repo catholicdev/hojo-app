@@ -92,6 +92,9 @@ http://ionicframework.com/docs/theming/ */
   /** error **/
   --error-400: #EB274B;
 
+  /** warning **/
+  --warning-800: #FF7B02;
+
   /** grayscale **/
   --gray-900: #0A0A0A;
   --gray-800: #1A1A1A;

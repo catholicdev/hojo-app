@@ -11,6 +11,7 @@
   --main-color: var(--primary-1-400);
   --dark-color: var(--primary-1-600);
   --constrast-color: white;
+  --shadow-color: #087bac;
 }
 
 .colorError {
@@ -18,11 +19,13 @@
   --main-color: var(--ion-color-danger);
   --dark-color: var(--ion-color-danger-shade);
   --constrast-color: white;
+  --shadow-color: #0a96d2;
 }
 
 .filled {
   background-color: var(--main-color);
   color: var(--constrast-color);
+  box-shadow: 0 4px 0 0 var(--shadow-color);
 
   &:active {
     background-color: var(--dark-color);
@@ -72,9 +75,9 @@
   padding: 8px 22px;
 
   span {
-    font-size: 15px;
-    line-height: 26px;
-    font-weight: 500;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: bolder;
     letter-spacing: 0.46px;
   }
 }
