@@ -13,6 +13,7 @@ import { Stack } from '@components'
 
 const Welcome = () => {
   const { navigate } = useContext(NavContext)
+
   return (
     <IonPage>
       <IonContent fullscreen className={styles.page} scrollY={false}>

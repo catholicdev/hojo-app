@@ -19,7 +19,7 @@ export const routes = {
 export const Routes = () => (
   <IonRouterOutlet id="main">
     <Route path="/" exact={true}>
-      <Redirect to="/onboard" />
+      <Redirect to="/home" />
     </Route>
     <Route path={routes.OnBoarding} exact={true}>
       <Welcome />
