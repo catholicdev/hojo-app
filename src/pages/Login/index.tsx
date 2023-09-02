@@ -119,7 +119,11 @@ const Login = () => {
                     }
                   />
                 </Stack>
-                <Stack space={16} alignItems="center">
+                <Stack
+                  space={16}
+                  alignItems="center"
+                  className={styles.marginEnd}
+                >
                   <Body2 color="error" component="b">
                     {submitError}
                   </Body2>

@@ -1,75 +1,81 @@
-import { BaseInput, PasswordInput } from '@components/input'
-import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
-import { settingsOutline } from 'ionicons/icons'
+import {
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
+} from '@ionic/react'
+import { book, home, logoFirebase, logoGoogle, people } from 'ionicons/icons'
 import React from 'react'
 
-import appLinkPhoto from './assets/appLink.png'
-
-import biblePhoto from './assets/bible.png'
-import charityPhoto from './assets/charity.png'
-import gamePhoto from './assets/game.png'
-
-import { Menu } from './components'
-
 import styles from './Home.module.scss'
+import { Redirect, Route } from 'react-router-dom'
+
+import TabUser from '@pages/TabUser'
+import TabRound from '@pages/TabRound'
+import TabCheckIn from '@pages/TabCheckIn'
+import TabRanking from '@pages/TabRanking'
+import TabBible from '@pages/TabBible'
+
+export const tabRoutes = {
+  Round: '/round',
+  User: '/user',
+  Bible: '/bible',
+  Ranking: '/raking',
+  Checkin: '/checkin',
+}
 
 const Home = () => {
   return (
-    <IonPage>
-      <IonContent fullscreen>
-        <div className={styles.page}>
-          <div className={styles.content}>
-            <IonButton
-              shape="round"
-              color="light"
-              className={styles.settingButton}
-            >
-              <IonIcon slot="icon-only" icon={settingsOutline}></IonIcon>
-            </IonButton>
-            <br />
-            <BaseInput
-              value="a"
-              name="a"
-              label="Email"
-              placeholder="Email của bạn"
-            />
-            <PasswordInput
-              value=""
-              name="password"
-              label="Mật khẩu"
-              helperText="Quên mật khẩu?"
-            />
-            <br />
-            <Menu
-              bgColor="#00C2E4"
-              photo={gamePhoto}
-              photoStyle={{ paddingRight: '40px' }}
-            >
-              Game <br />
-              Hành Trình Kinh Thánh
-            </Menu>
-            <Menu
-              bgColor="#0762C8"
-              photo={biblePhoto}
-              photoStyle={{ paddingRight: '20px' }}
-            >
-              Sống <br />
-              Lời Chúa mỗi ngày
-            </Menu>
-            <Menu bgColor="#FFC107" photo={charityPhoto}>
-              Thực hành
-              <br />
-              bác ái
-            </Menu>
-            <Menu bgColor="#FF7B02" photo={appLinkPhoto}>
-              App
-              <br />
-              Công Giáo cho bạn
-            </Menu>
-          </div>
-        </div>
-      </IonContent>
-    </IonPage>
+    <IonTabs className={styles.ionTabs}>
+      <IonRouterOutlet>
+        <Redirect exact path="/home" to={tabRoutes.Round} />
+        <Route
+          exact={true}
+          path={tabRoutes.Round}
+          render={() => <TabRound />}
+        />
+        <Route
+          exact={true}
+          path={tabRoutes.Bible}
+          render={() => <TabBible />}
+        />
+        <Route
+          exact={true}
+          path={tabRoutes.Checkin}
+          render={() => <TabCheckIn />}
+        />
+        <Route
+          exact={true}
+          path={tabRoutes.Ranking}
+          render={() => <TabRanking />}
+        />
+        <Route exact={true} path={tabRoutes.User} render={() => <TabUser />} />
+      </IonRouterOutlet>
+      <IonTabBar slot="bottom">
+        <IonTabButton tab="round" href={tabRoutes.Round}>
+          <IonIcon icon={home}></IonIcon>
+          <IonLabel>Trang chủ</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="bible" href={tabRoutes.Bible}>
+          <IonIcon icon={book} />
+          <IonLabel>Lời Chúa</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="checkin" href={tabRoutes.Checkin}>
+          <IonIcon icon={logoFirebase} />
+          <IonLabel>Điểm danh</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="ranking" href={tabRoutes.Ranking}>
+          <IonIcon icon={logoGoogle} />
+          <IonLabel>Xếp hạng</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="user" href={tabRoutes.User}>
+          <IonIcon icon={people} />
+          <IonLabel>Tài khoản</IonLabel>
+        </IonTabButton>
+      </IonTabBar>
+    </IonTabs>
   )
 }
 

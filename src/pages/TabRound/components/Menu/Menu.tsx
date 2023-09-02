@@ -18,9 +18,7 @@ export const Menu = ({ bgColor, photo, photoStyle, children }: Props) => {
         <img src={photo} alt="game" />
       </div>
       <div className={styles.empty}></div>
-      <div className={styles.content}>
-        {children}
-      </div>
+      <div className={styles.content}>{children}</div>
     </button>
   )
 }
