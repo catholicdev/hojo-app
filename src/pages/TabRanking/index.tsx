@@ -1,6 +1,6 @@
 import { IonContent, IonPage } from '@ionic/react'
 
-const TabUser = () => {
+const TabRanking = () => {
   return (
     <IonPage>
       <IonContent fullscreen>TabRanking</IonContent>
@@ -8,4 +8,4 @@ const TabUser = () => {
   )
 }
 
-export default TabUser
+export default TabRanking
