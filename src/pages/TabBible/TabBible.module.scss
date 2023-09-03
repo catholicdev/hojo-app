@@ -1,0 +1,33 @@
+.page {
+  width: 100%;
+  height: auto;
+
+  .backgroundImage {
+    height: auto;
+    width: 100%;
+  }
+
+  .stackContain {
+    position: absolute;
+
+    bottom: 5%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+
+    .title{
+      font-size: 30px;
+      font-weight: bolder;
+      color: var(--primary-1-400);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 18px;
+      color: var(--gray-900);
+    }
+  }
+}
