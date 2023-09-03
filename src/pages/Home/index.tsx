@@ -6,7 +6,7 @@ import {
   IonTabButton,
   IonTabs,
 } from '@ionic/react'
-import { book, home, logoFirebase, logoGoogle, people } from 'ionicons/icons'
+import { bookSharp, home, logoFirebase, person, podium } from 'ionicons/icons'
 import React from 'react'
 
 import styles from './Home.module.scss'
@@ -59,7 +59,7 @@ const Home = () => {
           <IonLabel>Trang chủ</IonLabel>
         </IonTabButton>
         <IonTabButton tab="bible" href={tabRoutes.Bible}>
-          <IonIcon icon={book} />
+          <IonIcon icon={bookSharp} />
           <IonLabel>Lời Chúa</IonLabel>
         </IonTabButton>
         <IonTabButton tab="checkin" href={tabRoutes.Checkin}>
@@ -67,11 +67,11 @@ const Home = () => {
           <IonLabel>Điểm danh</IonLabel>
         </IonTabButton>
         <IonTabButton tab="ranking" href={tabRoutes.Ranking}>
-          <IonIcon icon={logoGoogle} />
+          <IonIcon icon={podium} />
           <IonLabel>Xếp hạng</IonLabel>
         </IonTabButton>
         <IonTabButton tab="user" href={tabRoutes.User}>
-          <IonIcon icon={people} />
+          <IonIcon icon={person} />
           <IonLabel>Tài khoản</IonLabel>
         </IonTabButton>
       </IonTabBar>
