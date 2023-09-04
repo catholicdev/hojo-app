@@ -19,15 +19,13 @@ import {
   Body2,
   Stack,
   Validator,
-  // useInfoDialog,
 } from '@components'
 import { useDispatch, setToken } from '@providers'
 import { routes } from '@routes'
 
-// import { ReactComponent as Svg } from '@assets/svg/HeavenGateWithPigeon.svg'
 import styles from './Login.module.scss'
 import { BottomArt } from './components'
-import { setRefreshToken } from '@providers/userInfo/actions'
+// import { setRefreshToken } from '@providers/userInfo/actions'
 import { AuthenticationResp } from '@models'
 
 interface FormValues {
@@ -55,7 +53,7 @@ const Login = () => {
       ).data as AuthenticationResp
 
       dispatch(setToken(result.idToken))
-      dispatch(setRefreshToken(result.refreshToken))
+      // dispatch(setRefreshToken(result.refreshToken))
       navigate(routes.Home)
     } catch (e) {
       return { [FORM_ERROR]: 'Email hoặc mật khẩu không chính xác.' }

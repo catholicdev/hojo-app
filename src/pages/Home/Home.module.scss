@@ -1,6 +1,8 @@
 .ion-tabs {}
 
 ion-tab-bar {
+  --background: white;
+
   box-shadow: 0px -4px 12px 0px rgba(24, 24, 24, 0.08);
   border-top-width: 0px;
   height: 8vh;
@@ -9,7 +11,7 @@ ion-tab-bar {
     --color: var(--ion-color-medium);
     --color-selected: var(--primary-1-400);
 
-    background-color: white;
+    //background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
