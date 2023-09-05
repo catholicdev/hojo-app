@@ -11,7 +11,7 @@ import React from 'react'
 
 import styles from './Home.module.scss'
 import { routes } from '@routes'
-import { Redirect, Route } from 'react-router-dom'
+import { useRouteMatch, Route } from 'react-router'
 import TabRound from '@pages/TabRound'
 import TabBible from '@pages/TabBible'
 import TabCheckIn from '@pages/TabCheckIn'
@@ -19,6 +19,8 @@ import TabRanking from '@pages/TabRanking'
 import TabUser from '@pages/TabUser'
 
 const Home = () => {
+  const { path, url } = useRouteMatch()
+
   return (
     <IonTabs className={styles.ionTabs}>
       <IonRouterOutlet id="tabs">
@@ -26,46 +28,50 @@ const Home = () => {
         {/*  <Redirect to={routes.TabRound} />*/}
         {/*</Route>*/}
         <Route
-          path={routes.TabRound}
+          path={path + routes.TabRound}
           exact={true}
           render={() => <TabRound />}
         />
         <Route
-          path={routes.TabBible}
+          path={path + routes.TabBible}
           exact={true}
           render={() => <TabBible />}
         />
         <Route
-          path={routes.TabCheckIn}
+          path={path + routes.TabCheckIn}
           exact={true}
           render={() => <TabCheckIn />}
         />
         <Route
-          path={routes.TabRanking}
+          path={path + routes.TabRanking}
           exact={true}
           render={() => <TabRanking />}
         />
-        <Route path={routes.TabUser} exact={true} render={() => <TabUser />} />
+        <Route
+          path={path + routes.TabUser}
+          exact={true}
+          render={() => <TabUser />}
+        />
         {/*<Route render={() => <Redirect to="/home" />} />*/}
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-        <IonTabButton tab="round" href={routes.TabRound}>
+        <IonTabButton tab="round" href={url + routes.TabRound}>
           <IonIcon icon={home}></IonIcon>
           <IonLabel>Trang chủ</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="bible" href={routes.TabBible}>
+        <IonTabButton tab="bible" href={url + routes.TabBible}>
           <IonIcon icon={bookSharp} />
           <IonLabel>Lời Chúa</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="checkin" href={routes.TabCheckIn}>
+        <IonTabButton tab="checkin" href={url + routes.TabCheckIn}>
           <IonIcon icon={logoFirebase} />
           <IonLabel>Điểm danh</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="ranking" href={routes.TabRanking}>
+        <IonTabButton tab="ranking" href={url + routes.TabRanking}>
           <IonIcon icon={podium} />
           <IonLabel>Xếp hạng</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="user" href={routes.TabUser}>
+        <IonTabButton tab="user" href={url + routes.TabUser}>
           <IonIcon icon={person} />
           <IonLabel>Tài khoản</IonLabel>
         </IonTabButton>

@@ -1,3 +1,4 @@
+import React from 'react'
 import { IonRouterOutlet } from '@ionic/react'
 import { Redirect, Route } from 'react-router-dom'
 import Home from '../pages/Home'
@@ -6,12 +7,6 @@ import Login from '../pages/Login'
 import Registration from '../pages/Registration'
 import RegistrationViaEmail from '../pages/RegistrationViaEmail'
 import ForgotPassword from '../pages/ForgotPassword'
-import TabRound from '@pages/TabRound'
-import TabBible from '@pages/TabBible'
-import TabCheckIn from '@pages/TabCheckIn'
-import TabRanking from '@pages/TabRanking'
-import TabUser from '@pages/TabUser'
-import React from 'react'
 
 export const routes = {
   OnBoarding: '/onboard',
@@ -32,11 +27,8 @@ export const Routes = () => (
     <Route path="/" exact={true}>
       <Redirect to={routes.OnBoarding} />
     </Route>
-
     <Route path={routes.OnBoarding} exact={true} component={Welcome} />
-    <Route path={routes.Home} exact={true} component={Home} />
     <Route path={routes.Login} exact={true} component={Login} />
-
     <Route
       path={routes.ForgotPassword}
       exact={true}
@@ -48,6 +40,7 @@ export const Routes = () => (
       exact={true}
       component={RegistrationViaEmail}
     />
+    <Route path={routes.Home} component={Home} />
 
     <Route render={() => <Redirect to="/" />} />
   </IonRouterOutlet>
