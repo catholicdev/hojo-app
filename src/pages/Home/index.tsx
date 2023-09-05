@@ -12,6 +12,7 @@ import React from 'react'
 import styles from './Home.module.scss'
 import { routes } from '@routes'
 import { useRouteMatch, Route } from 'react-router'
+import { Redirect } from 'react-router-dom'
 import TabRound from '@pages/TabRound'
 import TabBible from '@pages/TabBible'
 import TabCheckIn from '@pages/TabCheckIn'
@@ -52,7 +53,7 @@ const Home = () => {
           exact={true}
           render={() => <TabUser />}
         />
-        {/*<Route render={() => <Redirect to="/home" />} />*/}
+        <Route render={() => <Redirect to={path + routes.TabRound} />} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="round" href={url + routes.TabRound}>

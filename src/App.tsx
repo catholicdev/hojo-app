@@ -25,6 +25,7 @@ import '@ionic/react/css/display.css'
 import './theme/variables.css'
 import './theme/font.css'
 import './theme/override.css'
+import { PrepareApp } from './PrepareApp'
 
 setupIonicReact()
 
@@ -33,7 +34,9 @@ const App = () => {
     <ReduxProvider store={store}>
       <IonApp>
         <IonReactRouter>
-          <Routes />
+          <PrepareApp>
+            <Routes />
+          </PrepareApp>
         </IonReactRouter>
       </IonApp>
     </ReduxProvider>
