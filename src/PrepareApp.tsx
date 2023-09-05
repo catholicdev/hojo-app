@@ -12,13 +12,15 @@ interface Props {
 export const PrepareApp = ({ children }: Props) => {
   const [loaded, setLoaded] = useState(false)
   const dispatch = useDispatch()
-  const { push } = useHistory()
+  const { push, replace } = useHistory()
   useEffect(() => {
     const loadToken = async () => {
       const token = await Storage.get({ key: 'hojoToken' })
       if (!!token.value) {
         dispatch(setToken(token.value))
         push(routes.Home)
+      } else {
+        replace(routes.Login)
       }
     }
     loadToken().then(() => setLoaded(true))
