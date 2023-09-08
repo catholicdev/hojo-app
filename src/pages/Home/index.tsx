@@ -6,72 +6,90 @@ import {
   IonTabButton,
   IonTabs,
 } from '@ionic/react'
-import { bookSharp, home, logoFirebase, person, podium } from 'ionicons/icons'
+
 import React from 'react'
 
 import styles from './Home.module.scss'
-import { Redirect, Route } from 'react-router-dom'
-
-import TabUser from '@pages/TabUser'
+import { routes } from '@routes'
+import { useRouteMatch, Route } from 'react-router'
+import { Redirect } from 'react-router-dom'
 import TabRound from '@pages/TabRound'
+import TabBible from '@pages/TabBible'
 import TabCheckIn from '@pages/TabCheckIn'
 import TabRanking from '@pages/TabRanking'
-import TabBible from '@pages/TabBible'
+import TabUser from '@pages/TabUser'
 
-export const tabRoutes = {
-  Round: '/round',
-  User: '/user',
-  Bible: '/bible',
-  Ranking: '/raking',
-  Checkin: '/checkin',
-}
+import homeOutline from './assets/homeOutline.svg'
+import homeFilled from './assets/homeFilled.svg'
+import bibleOutline from './assets/bibleOutline.svg'
+import bibleFilled from './assets/bibleFilled.svg'
+import frameOutline from './assets/frameOutline.svg'
+import frameFilled from './assets/frameFilled.svg'
+import chartOutline from './assets/chartOutline.svg'
+import chartFilled from './assets/chartFilled.svg'
+import userOutline from './assets/userOutline.svg'
+import userFilled from './assets/userFilled.svg'
 
 const Home = () => {
+  const { path, url } = useRouteMatch()
+
   return (
     <IonTabs className={styles.ionTabs}>
-      <IonRouterOutlet>
-        <Redirect exact path="/home" to={tabRoutes.Round} />
+      <IonRouterOutlet id="tabs">
+        {/*<Route path="/home" exact={true}>*/}
+        {/*  <Redirect to={routes.TabRound} />*/}
+        {/*</Route>*/}
         <Route
+          path={path + routes.TabRound}
           exact={true}
-          path={tabRoutes.Round}
           render={() => <TabRound />}
         />
         <Route
+          path={path + routes.TabBible}
           exact={true}
-          path={tabRoutes.Bible}
           render={() => <TabBible />}
         />
         <Route
+          path={path + routes.TabCheckIn}
           exact={true}
-          path={tabRoutes.Checkin}
           render={() => <TabCheckIn />}
         />
         <Route
+          path={path + routes.TabRanking}
           exact={true}
-          path={tabRoutes.Ranking}
           render={() => <TabRanking />}
         />
-        <Route exact={true} path={tabRoutes.User} render={() => <TabUser />} />
+        <Route
+          path={path + routes.TabUser}
+          exact={true}
+          render={() => <TabUser />}
+        />
+        <Route render={() => <Redirect to={path + routes.TabRound} />} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
-        <IonTabButton tab="round" href={tabRoutes.Round}>
-          <IonIcon icon={home}></IonIcon>
+        <IonTabButton tab="round" href={url + routes.TabRound}>
+          <IonIcon icon={homeOutline} className={styles.unselected}></IonIcon>
+          <IonIcon icon={homeFilled} className={styles.selected}></IonIcon>
           <IonLabel>Trang chủ</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="bible" href={tabRoutes.Bible}>
-          <IonIcon icon={bookSharp} />
+        <IonTabButton tab="bible" href={url + routes.TabBible}>
+          <IonIcon icon={bibleOutline} className={styles.unselected} />
+          <IonIcon icon={bibleFilled} className={styles.selected} />
           <IonLabel>Lời Chúa</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="checkin" href={tabRoutes.Checkin}>
-          <IonIcon icon={logoFirebase} />
+        <IonTabButton tab="checkin" href={url + routes.TabCheckIn}>
+          <IonIcon icon={frameOutline} className={styles.unselected} />
+          <IonIcon icon={frameFilled} className={styles.selected} />
           <IonLabel>Điểm danh</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="ranking" href={tabRoutes.Ranking}>
-          <IonIcon icon={podium} />
+        <IonTabButton tab="ranking" href={url + routes.TabRanking}>
+          <IonIcon icon={chartOutline} className={styles.unselected} />
+          <IonIcon icon={chartFilled} className={styles.selected} />
           <IonLabel>Xếp hạng</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="user" href={tabRoutes.User}>
-          <IonIcon icon={person} />
+        <IonTabButton tab="user" href={url + routes.TabUser}>
+          <IonIcon icon={userOutline} className={styles.unselected} />
+          <IonIcon icon={userFilled} className={styles.selected} />
           <IonLabel>Tài khoản</IonLabel>
         </IonTabButton>
       </IonTabBar>

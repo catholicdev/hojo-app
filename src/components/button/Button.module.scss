@@ -37,7 +37,10 @@
   box-shadow: 0 4px 0 0 var(--shadow-color);
 
   &:active {
-    background-color: var(--dark-color);
+    background-color: var(--shadow-color);
+    box-shadow: none;
+    transform: translateY(4px);
+    transition-duration: 0.1s;
   }
 
   &.disabled {

@@ -1,35 +1,29 @@
-import { IonContent, IonPage } from '@ionic/react'
-import styles from './TabBible.module.scss'
+import { IonPage } from '@ionic/react'
 
-import Background from './assets/Background.svg'
-import { Stack } from '@components'
+import { useState } from 'react'
+
+import StartPage from '@pages/TabBible/components/StartPage'
+import SelectedBible from '@pages/TabBible/components/SelectedBible'
 
 const TabBible = () => {
-  return (
-    <IonPage>
-      <IonContent fullscreen className={styles.page} scrollY={false}>
-        <Stack>
-          <img
-            src={Background}
-            alt="background"
-            className={styles.backgroundImage}
-          />
-          <Stack
-            justifyContent={'center'}
-            space={0}
-            className={styles.stackContain}
-          >
-            <p className={styles.title}>Lời Chúa hôm nay</p>
-            <p className={styles.subtitle}>
-              Hãy nhấp vào màn hình để xem Lời Chúa
-              <br />
-              dành cho bạn hôm nay nhé!
-            </p>
-          </Stack>
-        </Stack>
-      </IonContent>
-    </IonPage>
-  )
+  const [content, setContent] = useState('start')
+
+  const handleChangeContent = () => {
+    setContent('daily-bible')
+  }
+
+  const ToggleContent = (content: string) => {
+    switch (content) {
+      case 'start':
+        return <StartPage onClick={handleChangeContent} />
+      case 'daily-bible':
+        return <SelectedBible />
+      default:
+        return <></>
+    }
+  }
+
+  return <IonPage>{ToggleContent(content)}</IonPage>
 }
 
 export default TabBible

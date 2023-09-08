@@ -4,10 +4,12 @@ import { Storage } from '@capacitor/storage'
 
 export interface UserInfoState {
   token: string | undefined
+  refreshToken: string | undefined
 }
 
 const initialState: UserInfoState = {
   token: undefined,
+  refreshToken: undefined,
 }
 
 export const userInfoSlice = createSlice({
@@ -19,6 +21,10 @@ export const userInfoSlice = createSlice({
       state.token = action.payload
       Storage.set({ key: 'hojoToken', value: action.payload ?? '' })
     }),
+  // .addCase(setRefreshToken, (state, action) => {
+  //   state.refreshToken = action.payload
+  //   Storage.set({ key: 'hojoRefreshToken', value: action.payload ?? '' })
+  // }),
 })
 
 // Action creators are generated for each case reducer function

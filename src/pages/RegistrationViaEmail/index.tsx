@@ -24,10 +24,9 @@ import {
 import { selectRegistrationEmail, useDispatch, setToken } from '@providers'
 import { splitFullName } from '@utils'
 
-// import { ReactComponent as HeavenGate } from '@assets/svg/HeavenGate.svg'
 import styles from './Registration.module.scss'
 import { BottomArt } from '@pages/RegistrationViaEmail/components'
-import { setRefreshToken } from '@providers/userInfo/actions'
+// import { setRefreshToken } from '@providers/userInfo/actions'
 import { routes } from '@routes'
 import { AuthenticationResp } from '@models'
 
@@ -69,7 +68,7 @@ const RegistrationViaEmail = () => {
       ).data as AuthenticationResp
 
       dispatch(setToken(result.idToken))
-      dispatch(setRefreshToken(result.refreshToken))
+      // dispatch(setRefreshToken(result.refreshToken))
       navigate(routes.Home)
     } catch (e) {}
   }

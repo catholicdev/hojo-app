@@ -1,3 +1,4 @@
+import React from 'react'
 import { IonRouterOutlet } from '@ionic/react'
 import { Redirect, Route } from 'react-router-dom'
 import Home from '../pages/Home'
@@ -14,6 +15,11 @@ export const routes = {
   ForgotPassword: '/forgot-password',
   Registration: '/registration',
   RegistrationViaEmail: '/registration-via-email',
+  TabRound: '/round',
+  TabBible: '/bible',
+  TabCheckIn: '/check-in',
+  TabRanking: '/ranking',
+  TabUser: '/user',
 }
 
 export const Routes = () => (
@@ -21,24 +27,21 @@ export const Routes = () => (
     <Route path="/" exact={true}>
       <Redirect to={routes.OnBoarding} />
     </Route>
-    <Route path={routes.OnBoarding} exact={true}>
-      <Welcome />
-    </Route>
-    <Route path={routes.Home} exact={true}>
-      <Home />
-    </Route>
-    <Route path={routes.Login} exact={true}>
-      <Login />
-    </Route>
-    <Route path={routes.ForgotPassword} exact={true}>
-      <ForgotPassword />
-    </Route>
-    <Route path={routes.Registration} exact={true}>
-      <Registration />
-    </Route>
-    <Route path={routes.RegistrationViaEmail} exact={true}>
-      <RegistrationViaEmail />
-    </Route>
+    <Route path={routes.OnBoarding} exact={true} component={Welcome} />
+    <Route path={routes.Login} exact={true} component={Login} />
+    <Route
+      path={routes.ForgotPassword}
+      exact={true}
+      component={ForgotPassword}
+    />
+    <Route path={routes.Registration} exact={true} component={Registration} />
+    <Route
+      path={routes.RegistrationViaEmail}
+      exact={true}
+      component={RegistrationViaEmail}
+    />
+    <Route path={routes.Home} component={Home} />
+
     <Route render={() => <Redirect to="/" />} />
   </IonRouterOutlet>
 )
