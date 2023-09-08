@@ -6,7 +6,7 @@ import {
   IonTabButton,
   IonTabs,
 } from '@ionic/react'
-import { bookSharp, home, logoFirebase, person, podium } from 'ionicons/icons'
+import { bookSharp, logoFirebase, person, podium } from 'ionicons/icons'
 import React from 'react'
 
 import styles from './Home.module.scss'
@@ -18,6 +18,9 @@ import TabBible from '@pages/TabBible'
 import TabCheckIn from '@pages/TabCheckIn'
 import TabRanking from '@pages/TabRanking'
 import TabUser from '@pages/TabUser'
+
+// import { ReactComponent as Icon } from './assets/home.svg'
+import home from './assets/home.svg'
 
 const Home = () => {
   const { path, url } = useRouteMatch()
@@ -57,7 +60,11 @@ const Home = () => {
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton tab="round" href={url + routes.TabRound}>
-          <IonIcon icon={home}></IonIcon>
+          <IonIcon
+            icon={home}
+            id="tabhome"
+            className={styles.customIcon}
+          ></IonIcon>
           <IonLabel>Trang chủ</IonLabel>
         </IonTabButton>
         <IonTabButton tab="bible" href={url + routes.TabBible}>

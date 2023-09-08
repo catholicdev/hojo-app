@@ -30,3 +30,9 @@ ion-tab-bar {
     }
   }
 }
+
+.customIcon {
+  :host > path {
+    fill: #0a96d2;
+  }
+}
