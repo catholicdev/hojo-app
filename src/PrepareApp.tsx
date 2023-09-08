@@ -26,7 +26,7 @@ export const PrepareApp = ({ children }: Props) => {
       }
     }
     loadToken().then(() => setLoaded(true))
-  }, [dispatch, push])
+  }, [dispatch, push, replace])
 
   return <Loading loading={!loaded}>{children}</Loading>
 }
