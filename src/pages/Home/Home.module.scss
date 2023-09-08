@@ -11,7 +11,6 @@ ion-tab-bar {
     --color: var(--ion-color-medium);
     --color-selected: var(--primary-1-400);
 
-    //background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -28,11 +27,20 @@ ion-tab-bar {
     &[class*="tab-selected"]::before {
       background-color: var(--primary-1-400);
     }
-  }
-}
 
-.customIcon {
-  :host > path {
-    fill: #0a96d2;
+    .selected {
+      display: none;
+    }
+
+    &[class*="tab-selected"] {
+
+      .unselected {
+        display: none;
+      }
+
+      .selected {
+        display: initial !important;
+      }
+    }
   }
 }
