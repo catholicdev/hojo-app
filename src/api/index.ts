@@ -4,5 +4,11 @@ export {
   usePostLoginMutation,
   usePostRegisterMutation,
 } from './authentication'
+
 export { api } from './baseRtkqApi'
-export { userApi, useGetDailyBibleQuery } from './user'
+
+export {
+  userApi,
+  useGetDailyBibleQuery,
+  useUpdateFavoriteBibleMutation,
+} from './user'

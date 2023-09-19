@@ -1,6 +1,6 @@
 import { api } from '@api/baseRtkqApi'
 
-import { BaseResponseInterface } from '@models'
+import { BaseResponseInterface, FavoriteDailyBibleReq } from '@models'
 
 export const userApi = api.injectEndpoints({
   endpoints: (build) => ({
@@ -10,9 +10,19 @@ export const userApi = api.injectEndpoints({
         method: 'GET',
       }),
     }),
+    updateFavoriteBible: build.mutation<
+      BaseResponseInterface,
+      FavoriteDailyBibleReq
+    >({
+      query: (payload) => ({
+        url: `/bible/sentence-favorite`,
+        method: 'POST',
+        body: payload,
+      }),
+    }),
   }),
 
   overrideExisting: false,
 })
 
-export const { useGetDailyBibleQuery } = userApi
+export const { useGetDailyBibleQuery, useUpdateFavoriteBibleMutation } = userApi

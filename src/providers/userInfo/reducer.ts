@@ -1,15 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { setToken } from './actions'
+import { setDailyBible, setToken } from './actions'
 import { Storage } from '@capacitor/storage'
+import { DailyBibleResp } from '@models'
 
 export interface UserInfoState {
   token: string | undefined
   refreshToken: string | undefined
+  dailyBible: DailyBibleResp | undefined
 }
 
 const initialState: UserInfoState = {
   token: undefined,
   refreshToken: undefined,
+  dailyBible: undefined,
 }
 
 export const userInfoSlice = createSlice({
@@ -17,14 +20,14 @@ export const userInfoSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) =>
-    builder.addCase(setToken, (state, action) => {
-      state.token = action.payload
-      Storage.set({ key: 'hojoToken', value: action.payload ?? '' })
-    }),
-  // .addCase(setRefreshToken, (state, action) => {
-  //   state.refreshToken = action.payload
-  //   Storage.set({ key: 'hojoRefreshToken', value: action.payload ?? '' })
-  // }),
+    builder
+      .addCase(setToken, (state, action) => {
+        state.token = action.payload
+        Storage.set({ key: 'hojoToken', value: action.payload ?? '' })
+      })
+      .addCase(setDailyBible, (state, action) => {
+        state.dailyBible = action.payload
+      }),
 })
 
 // Action creators are generated for each case reducer function
