@@ -10,8 +10,3 @@ export const selectToken = createSelector(
   selectUserInfo,
   (state) => state.token
 )
-
-export const selectDailyBible = createSelector(
-  selectUserInfo,
-  (state) => state.dailyBible
-)

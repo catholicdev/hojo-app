@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { IonCard, IonCardContent, IonContent } from '@ionic/react'
-import { useGetDailyBibleQuery, useUpdateFavoriteBibleMutation } from '@api'
+import { useLazyGetDailyBibleQuery, useUpdateFavoriteBibleMutation } from '@api'
 
 import { Stack, Loading } from '@components'
 import styles from '@pages/TabBible/SelectedBible.module.scss'
@@ -9,34 +9,24 @@ import unFavorite from '../assets/unFavorite.svg'
 import favorite from '../assets/favorite.svg'
 import download from '../assets/download.svg'
 import share from '../assets/share.svg'
-import { setDailyBible, useDispatch } from '@providers'
-import { useSelector } from 'react-redux'
-import { selectDailyBible } from '@providers/userInfo/selectors'
-import { DailyBibleResp } from '@models'
 
 const SelectedBible = () => {
-  const dispatch = useDispatch()
-  const dailyBileSelector = useSelector(selectDailyBible)
-
-  const { data, isLoading, error } = useGetDailyBibleQuery('')
+  const [getDailyBible, { data, isLoading }] = useLazyGetDailyBibleQuery()
+  const dailyBible = data?.data
   const [updateFavorite] = useUpdateFavoriteBibleMutation()
 
   useEffect(() => {
-    if (!isLoading && !error) {
-      dispatch(setDailyBible(data?.data))
-    }
-  }, [isLoading, error, data, dispatch])
+    getDailyBible()
+  }, [getDailyBible])
 
   const handleClickFavorite = async () => {
     try {
-      const result = (
-        await updateFavorite({
-          dailyBibleSentenceId: dailyBileSelector?.id ?? 0,
-          isFavorite: !dailyBileSelector?.isFavorite ?? false,
-        }).unwrap()
-      ).data as DailyBibleResp
+      await updateFavorite({
+        dailyBibleSentenceId: dailyBible?.id ?? 0,
+        isFavorite: !dailyBible?.isFavorite ?? false,
+      }).unwrap()
 
-      dispatch(setDailyBible(result))
+      getDailyBible()
     } catch (e) {
       console.log(e)
       /// TODO: show toast when error
@@ -56,13 +46,10 @@ const SelectedBible = () => {
                   justifyContent={'center'}
                   className={styles.stackSentence}
                 >
-                  <p className={styles.sentence}>
-                    {dailyBileSelector?.sentence}
-                  </p>
+                  <p className={styles.sentence}>{dailyBible?.sentence}</p>
                   <p>
-                    {dailyBileSelector?.bookAbbreviation}{' '}
-                    {dailyBileSelector?.chapterSequence},{' '}
-                    {dailyBileSelector?.sequence}
+                    {dailyBible?.bookAbbreviation} {dailyBible?.chapterSequence}
+                    , {dailyBible?.sequence}
                   </p>
                   <Stack
                     flexDirection={'row'}
@@ -73,9 +60,7 @@ const SelectedBible = () => {
                     <img src={download} alt="download" />
                     <img
                       onClick={handleClickFavorite}
-                      src={
-                        dailyBileSelector?.isFavorite ? favorite : unFavorite
-                      }
+                      src={dailyBible?.isFavorite ? favorite : unFavorite}
                       alt="favorite"
                     />
                     <img src={share} alt="share" />

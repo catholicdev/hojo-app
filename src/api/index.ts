@@ -9,6 +9,6 @@ export { api } from './baseRtkqApi'
 
 export {
   userApi,
-  useGetDailyBibleQuery,
+  useLazyGetDailyBibleQuery,
   useUpdateFavoriteBibleMutation,
 } from './user'
