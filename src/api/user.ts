@@ -15,7 +15,7 @@ export const userApi = api.injectEndpoints({
       }),
     }),
     updateFavoriteBible: build.mutation<
-      BaseResponseInterface,
+      BaseResponseInterface<DailyBibleResp>,
       FavoriteDailyBibleReq
     >({
       query: (payload) => ({
@@ -23,6 +23,18 @@ export const userApi = api.injectEndpoints({
         method: 'POST',
         body: payload,
       }),
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
+        try {
+          const { data: updatedPost } = await queryFulfilled
+          dispatch(
+            userApi.util.updateQueryData(
+              'getDailyBible',
+              undefined as void,
+              (_) => updatedPost
+            )
+          )
+        } catch {}
+      },
     }),
   }),
 

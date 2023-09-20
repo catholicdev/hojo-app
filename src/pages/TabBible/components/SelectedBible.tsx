@@ -25,8 +25,6 @@ const SelectedBible = () => {
         dailyBibleSentenceId: dailyBible?.id ?? 0,
         isFavorite: !dailyBible?.isFavorite ?? false,
       }).unwrap()
-
-      getDailyBible()
     } catch (e) {
       console.log(e)
       /// TODO: show toast when error
