@@ -1,7 +1,7 @@
 .page {
   --padding-start: 24px;
   --padding-end: 24px;
-  --padding-top: 30px;
+  --padding-top: 35px;
   --padding-bottom: 60px;
 
    .selectedBible {
@@ -20,8 +20,8 @@
       background-repeat: no-repeat;
       background-position: center center;
 
-      border-radius: 20px;
-      height: 70vh;
+      border-radius: 30px;
+      height: 75vh;
       width: auto;
     }
 
@@ -35,6 +35,14 @@
          .sentence {
            font-weight: bolder;
            font-size: 20px;
+         }
+
+         .stackAction {
+           position: absolute;
+           bottom: 2vh;
+           left: 0;
+           right: 0;
+           margin: auto;
          }
        }
      }

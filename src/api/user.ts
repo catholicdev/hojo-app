@@ -1,13 +1,27 @@
 import { api } from '@api/baseRtkqApi'
 
-import { BaseResponseInterface } from '@models'
+import {
+  BaseResponseInterface,
+  FavoriteDailyBibleReq,
+  DailyBibleResp,
+} from '@models'
 
 export const userApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getDailyBible: build.query<BaseResponseInterface, ''>({
+    getDailyBible: build.query<BaseResponseInterface<DailyBibleResp>, void>({
       query: () => ({
         url: `/user/daily-bible`,
         method: 'GET',
+      }),
+    }),
+    updateFavoriteBible: build.mutation<
+      BaseResponseInterface,
+      FavoriteDailyBibleReq
+    >({
+      query: (payload) => ({
+        url: `/bible/sentence-favorite`,
+        method: 'POST',
+        body: payload,
       }),
     }),
   }),
@@ -15,4 +29,5 @@ export const userApi = api.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useGetDailyBibleQuery } = userApi
+export const { useLazyGetDailyBibleQuery, useUpdateFavoriteBibleMutation } =
+  userApi

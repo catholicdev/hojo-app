@@ -21,10 +21,6 @@ export const userInfoSlice = createSlice({
       state.token = action.payload
       Storage.set({ key: 'hojoToken', value: action.payload ?? '' })
     }),
-  // .addCase(setRefreshToken, (state, action) => {
-  //   state.refreshToken = action.payload
-  //   Storage.set({ key: 'hojoRefreshToken', value: action.payload ?? '' })
-  // }),
 })
 
 // Action creators are generated for each case reducer function
