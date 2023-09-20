@@ -19,7 +19,7 @@ export const PrepareApp = ({ children }: Props) => {
 
   useEffect(() => {
     getCheckToken()
-  }, [])
+  }, [getCheckToken])
 
   useEffect(() => {
     const loadToken = async () => {
