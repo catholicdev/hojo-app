@@ -29,6 +29,12 @@ export const authenticationApi = api.injectEndpoints({
         body: queryArg,
       }),
     }),
+    getCheckToken: build.query<BaseResponseInterface, void>({
+      query: () => ({
+        url: `/user/check-token`,
+        method: 'GET',
+      }),
+    }),
   }),
   overrideExisting: false,
 })
@@ -37,4 +43,5 @@ export const {
   usePostLoginMutation,
   usePostVerifyEmailMutation,
   usePostRegisterMutation,
+  useLazyGetCheckTokenQuery,
 } = authenticationApi

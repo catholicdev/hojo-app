@@ -3,6 +3,7 @@ export {
   usePostVerifyEmailMutation,
   usePostLoginMutation,
   usePostRegisterMutation,
+  useLazyGetCheckTokenQuery,
 } from './authentication'
 
 export { api } from './baseRtkqApi'
