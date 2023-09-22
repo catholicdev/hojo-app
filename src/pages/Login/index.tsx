@@ -25,8 +25,8 @@ import { routes } from '@routes'
 
 import styles from './Login.module.scss'
 import { BottomArt } from './components'
-// import { setRefreshToken } from '@providers/userInfo/actions'
 import { AuthenticationResp } from '@models'
+import moment from 'moment'
 
 interface FormValues {
   email: string
@@ -52,8 +52,8 @@ const Login = () => {
         }).unwrap()
       ).data as AuthenticationResp
 
-      dispatch(setToken(result.idToken))
-      // dispatch(setRefreshToken(result.refreshToken))
+      const tokenExpiredAt = moment().add(+result.expiresIn, 'seconds').toDate()
+      dispatch(setToken({ ...result, expiredAt: tokenExpiredAt }))
       navigate(routes.Home)
     } catch (e) {
       return { [FORM_ERROR]: 'Email hoặc mật khẩu không chính xác.' }

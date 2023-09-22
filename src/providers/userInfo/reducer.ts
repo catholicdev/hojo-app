@@ -1,15 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { setToken } from './actions'
 import { Storage } from '@capacitor/storage'
+import { AuthenticationResp } from '@models'
 
 export interface UserInfoState {
-  token: string | undefined
-  refreshToken: string | undefined
+  token: AuthenticationResp | undefined
 }
 
 const initialState: UserInfoState = {
   token: undefined,
-  refreshToken: undefined,
 }
 
 export const userInfoSlice = createSlice({
@@ -19,7 +18,10 @@ export const userInfoSlice = createSlice({
   extraReducers: (builder) =>
     builder.addCase(setToken, (state, action) => {
       state.token = action.payload
-      Storage.set({ key: 'hojoToken', value: action.payload ?? '' })
+      Storage.set({
+        key: 'hojoToken',
+        value: JSON.stringify(action.payload ?? ''),
+      })
     }),
 })
 

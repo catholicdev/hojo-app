@@ -1,6 +1,8 @@
 export interface AuthenticationResp {
   idToken: string
   refreshToken: string
+  expiresIn: string
+  expiredAt: Date
 }
 
 export interface LoginReq {
