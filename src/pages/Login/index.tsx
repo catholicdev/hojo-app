@@ -20,7 +20,7 @@ import {
   Stack,
   Validator,
 } from '@components'
-import { useDispatch, setToken } from '@providers'
+import { useDispatch, setToken, setUserInfo } from '@providers'
 import { routes } from '@routes'
 
 import styles from './Login.module.scss'
@@ -52,8 +52,12 @@ const Login = () => {
         }).unwrap()
       ).data as AuthenticationResp
 
-      const tokenExpiredAt = moment().add(+result.expiresIn, 'seconds').toDate()
+      const tokenExpiredAt = moment()
+        .add(+result.expiresIn, 'seconds')
+        .toDate()
+        .toISOString()
       dispatch(setToken({ ...result, expiredAt: tokenExpiredAt }))
+      dispatch(setUserInfo(result.user))
       navigate(routes.Home)
     } catch (e) {
       return { [FORM_ERROR]: 'Email hoặc mật khẩu không chính xác.' }

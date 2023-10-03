@@ -12,4 +12,7 @@ export {
   userApi,
   useLazyGetDailyBibleQuery,
   useUpdateFavoriteBibleMutation,
+  useLazyGetUserScoreQuery,
 } from './user'
+
+export { gameApi, useLazyGetRoundsQuery } from './game'

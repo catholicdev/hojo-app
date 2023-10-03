@@ -21,7 +21,12 @@ import {
   InputField,
   Validator,
 } from '@components'
-import { selectRegistrationEmail, useDispatch, setToken } from '@providers'
+import {
+  selectRegistrationEmail,
+  useDispatch,
+  setToken,
+  setUserInfo,
+} from '@providers'
 import { splitFullName } from '@utils'
 
 import styles from './Registration.module.scss'
@@ -67,8 +72,13 @@ const RegistrationViaEmail = () => {
         }).unwrap()
       ).data as AuthenticationResp
 
-      const tokenExpiredAt = moment().add(+result.expiresIn, 'seconds').toDate()
+      const tokenExpiredAt = moment()
+        .add(+result.expiresIn, 'seconds')
+        .toDate()
+        .toISOString()
+
       dispatch(setToken({ ...result, expiredAt: tokenExpiredAt }))
+      dispatch(setUserInfo(result.user))
       navigate(routes.Home)
     } catch (e) {
       /// TODO: show toast

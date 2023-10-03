@@ -4,6 +4,7 @@ import {
   BaseResponseInterface,
   FavoriteDailyBibleReq,
   DailyBibleResp,
+  UserScoreResp,
 } from '@models'
 
 export const userApi = api.injectEndpoints({
@@ -11,6 +12,12 @@ export const userApi = api.injectEndpoints({
     getDailyBible: build.query<BaseResponseInterface<DailyBibleResp>, void>({
       query: () => ({
         url: `/user/daily-bible`,
+        method: 'GET',
+      }),
+    }),
+    getUserScore: build.query<BaseResponseInterface<UserScoreResp>, void>({
+      query: () => ({
+        url: `/user/score`,
         method: 'GET',
       }),
     }),
@@ -41,5 +48,8 @@ export const userApi = api.injectEndpoints({
   overrideExisting: false,
 })
 
-export const { useLazyGetDailyBibleQuery, useUpdateFavoriteBibleMutation } =
-  userApi
+export const {
+  useLazyGetDailyBibleQuery,
+  useUpdateFavoriteBibleMutation,
+  useLazyGetUserScoreQuery,
+} = userApi

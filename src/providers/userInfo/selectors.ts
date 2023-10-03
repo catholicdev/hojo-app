@@ -10,3 +10,8 @@ export const selectToken = createSelector(
   selectUserInfo,
   (state) => state.token
 )
+
+export const selectCurrentUser = createSelector(
+  selectUserInfo,
+  (state) => state.user || undefined
+)

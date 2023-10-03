@@ -1,3 +1,3 @@
-export { setToken } from './actions'
+export { setToken, setUserInfo } from './actions'
 export { userInfoReducer } from './reducer'
-export { selectToken } from './selectors'
+export { selectToken, selectCurrentUser } from './selectors'

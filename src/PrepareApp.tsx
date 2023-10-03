@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom'
 import { routes } from '@routes'
 import { AuthenticationResp } from '@models'
 import moment from 'moment'
+import { setUserInfo, useDispatch } from '@providers'
 
 interface Props {
   children: JSX.Element
@@ -13,6 +14,7 @@ interface Props {
 export const PrepareApp = ({ children }: Props) => {
   const [loaded, setLoaded] = useState(false)
   const { push, replace } = useHistory()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const loadToken = async () => {
@@ -24,10 +26,13 @@ export const PrepareApp = ({ children }: Props) => {
       if (token.value) {
         const data = JSON.parse(token.value) as AuthenticationResp
         const now = moment().toDate()
-        if (data.expiredAt <= now) {
+
+        if (moment.utc(data.expiredAt).toDate() <= now) {
           await Storage.remove({ key: 'hojoToken' })
           replace(routes.OnBoarding)
         }
+
+        dispatch(setUserInfo(data.user))
         push(routes.Home)
       }
     }
