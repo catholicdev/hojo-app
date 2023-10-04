@@ -1,7 +1,17 @@
 {
   "appId": "com.catholicdesign.hojo",
-  "appName": "Hojo",
+  "appName": "HOJO",
   "webDir": "build",
   "bundledWebRuntime": false,
-  "plugins": {}
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "launchShowDuration": 1000,
+      "backgroundColor": "#ffffff",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "iosSplashResourceName": "splash",
+      "iosScaleType": "CENTER_CROP"
+    }
+  }
 }

@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Storage } from '@capacitor/storage'
-import { useDispatch, setToken } from '@providers'
 import { Loading } from '@components'
 import { useHistory } from 'react-router-dom'
 import { routes } from '@routes'
-import { useLazyGetCheckTokenQuery } from '@api'
+import { AuthenticationResp } from '@models'
+import moment from 'moment'
+import { setUserInfo, useDispatch } from '@providers'
 
 interface Props {
   children: JSX.Element
@@ -12,34 +13,34 @@ interface Props {
 
 export const PrepareApp = ({ children }: Props) => {
   const [loaded, setLoaded] = useState(false)
-  const dispatch = useDispatch()
   const { push, replace } = useHistory()
-
-  const [getCheckToken, { isLoading, error }] = useLazyGetCheckTokenQuery()
-
-  useEffect(() => {
-    getCheckToken()
-  }, [getCheckToken])
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const loadToken = async () => {
-      try {
-        if (!isLoading && !error) {
-          const token = await Storage.get({ key: 'hojoToken' })
-          dispatch(setToken(token.value ?? ''))
-          push(routes.Home)
-        } else {
+      const token = await Storage.get({ key: 'hojoToken' })
+      if (!!token) {
+        replace(routes.OnBoarding)
+      }
+
+      if (token.value) {
+        const data = JSON.parse(token.value) as AuthenticationResp
+        const now = moment().toDate()
+
+        if (moment.utc(data.expiredAt).toDate() <= now) {
           await Storage.remove({ key: 'hojoToken' })
           replace(routes.OnBoarding)
         }
-      } catch (err) {
-        console.log(err)
-        await Storage.remove({ key: 'hojoToken' })
-        replace(routes.OnBoarding)
+
+        dispatch(setUserInfo(data.user))
+        push(routes.Home)
       }
     }
-    loadToken().then(() => setLoaded(true))
-  }, [dispatch, push, replace, isLoading, error])
+
+    loadToken()
+      .catch((err) => console.log(err))
+      .finally(() => setLoaded(true))
+  }, [push, replace, dispatch])
 
   return <Loading loading={!loaded}>{children}</Loading>
 }

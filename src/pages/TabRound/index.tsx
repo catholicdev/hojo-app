@@ -1,50 +1,46 @@
-import { IonButton, IonContent, IonIcon, IonPage } from '@ionic/react'
+import React from 'react'
+import { IonContent, IonPage } from '@ionic/react'
 import styles from './TabRound.module.scss'
-import { settingsOutline } from 'ionicons/icons'
-import { Menu } from './components'
+
+import { Frame, Notification, Round } from './components'
+import { Stack } from '@components'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser } from '@providers'
 
 const TabRound = () => {
+  const userInfo: any = useSelector(selectCurrentUser)
+
   return (
     <IonPage>
-      <IonContent fullscreen>
-        <div className={styles.page}>
-          <div className={styles.content}>
-            <IonButton
-              shape="round"
-              color="light"
-              className={styles.settingButton}
+      <IonContent fullscreen className={styles.page}>
+        <div className={styles.content}>
+          <Stack
+            flexDirection={'row'}
+            justifyContent={'space-between'}
+            className={styles.roundHeader}
+            space={4}
+          >
+            <Stack
+              justifyContent={'center'}
+              space={0}
+              alignItems={'flex-start'}
+              className={styles.headerInfo}
             >
-              <IonIcon slot="icon-only" icon={settingsOutline}></IonIcon>
-            </IonButton>
+              <p>Chào {userInfo?.lastName} 👋</p>
+              <p>Thiên Chúa ở cùng bạn!</p>
+            </Stack>
+            <Stack
+              flexDirection={'row'}
+              alignItems={'center'}
+              justifyContent={'flex-end'}
+              space={0}
+            >
+              <Frame />
+              <Notification />
+            </Stack>
+          </Stack>
 
-            <br />
-            <Menu
-              bgColor="#00C2E4"
-              photoStyle={{ paddingRight: '40px' }}
-              photo={''}
-            >
-              Game <br />
-              Hành Trình Kinh Thánh
-            </Menu>
-            <Menu
-              bgColor="#0762C8"
-              photoStyle={{ paddingRight: '20px' }}
-              photo={''}
-            >
-              Sống <br />
-              Lời Chúa mỗi ngày
-            </Menu>
-            <Menu bgColor="#FFC107" photo={''}>
-              Thực hành
-              <br />
-              bác ái
-            </Menu>
-            <Menu bgColor="#FF7B02" photo={''}>
-              App
-              <br />
-              Công Giáo cho bạn
-            </Menu>
-          </div>
+          <Round />
         </div>
       </IonContent>
     </IonPage>

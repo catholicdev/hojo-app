@@ -1,6 +1,9 @@
 export interface AuthenticationResp {
   idToken: string
   refreshToken: string
+  expiresIn: string
+  expiredAt: string
+  user: CurrentUserInfo
 }
 
 export interface LoginReq {
@@ -21,4 +24,11 @@ export interface VerifyEmailReq {
 
 export interface VerifyEmailResp {
   isUsed: boolean
+}
+
+export interface CurrentUserInfo {
+  id: string
+  email: string
+  firstName: string
+  lastName: string
 }

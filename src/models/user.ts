@@ -7,6 +7,10 @@ export interface DailyBibleResp {
   isFavorite: boolean
 }
 
+export interface UserScoreResp {
+  total: number
+}
+
 export interface FavoriteDailyBibleReq {
   dailyBibleSentenceId: number
   isFavorite: boolean

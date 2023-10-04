@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { Storage } from '@capacitor/storage'
+import { AuthenticationResp } from '@models'
 
 // todo: add upload endpoints here
 const UPLOAD_ENDPOINTS = ['uploadFiles']
@@ -14,7 +15,8 @@ export const api = createApi({
       }
       const { value } = await Storage.get({ key: 'hojoToken' })
       if (value) {
-        headers.set('authorization', `Bearer ${value}`)
+        const data = JSON.parse(value) as AuthenticationResp
+        headers.set('authorization', `Bearer ${data.idToken}`)
       }
 
       headers.set('Content-Type', 'application/json')

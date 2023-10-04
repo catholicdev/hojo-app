@@ -21,14 +21,19 @@ import {
   InputField,
   Validator,
 } from '@components'
-import { selectRegistrationEmail, useDispatch, setToken } from '@providers'
+import {
+  selectRegistrationEmail,
+  useDispatch,
+  setToken,
+  setUserInfo,
+} from '@providers'
 import { splitFullName } from '@utils'
 
 import styles from './Registration.module.scss'
 import { BottomArt } from '@pages/RegistrationViaEmail/components'
-// import { setRefreshToken } from '@providers/userInfo/actions'
 import { routes } from '@routes'
 import { AuthenticationResp } from '@models'
+import moment from 'moment/moment'
 
 interface FormValues {
   email: string
@@ -67,10 +72,17 @@ const RegistrationViaEmail = () => {
         }).unwrap()
       ).data as AuthenticationResp
 
-      dispatch(setToken(result.idToken))
-      // dispatch(setRefreshToken(result.refreshToken))
+      const tokenExpiredAt = moment()
+        .add(+result.expiresIn, 'seconds')
+        .toDate()
+        .toISOString()
+
+      dispatch(setToken({ ...result, expiredAt: tokenExpiredAt }))
+      dispatch(setUserInfo(result.user))
       navigate(routes.Home)
-    } catch (e) {}
+    } catch (e) {
+      /// TODO: show toast
+    }
   }
 
   return (

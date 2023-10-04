@@ -9,6 +9,7 @@
     "@capacitor/haptics": "4.1.0",
     "@capacitor/ios": "4.7.0",
     "@capacitor/keyboard": "4.1.1",
+    "@capacitor/splash-screen": "^5.0.6",
     "@capacitor/status-bar": "4.1.1",
     "@capacitor/storage": "^1.2.5",
     "@craco/craco": "^7.1.0",
@@ -28,6 +29,7 @@
     "final-form": "^4.20.9",
     "history": "^4.9.0",
     "ionicons": "^6.0.3",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-final-form": "^6.5.9",
@@ -58,7 +60,11 @@
     "test": "craco test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "craco eject",
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
-    "run:ios": "ionic capacitor run ios --target 20561060-E08C-4A51-8801-C7E80AC9CA33"
+    "run:ios": "ionic capacitor run ios --target 7F096401-B38B-4620-94DC-92B6F6FD01E5",
+    "build:android": "ionic capacitor build android",
+    "sync:android": "ionic capacitor sync android",
+    "gen:ios": "npx @capacitor/assets generate --ios",
+    "gen:android": "npx @capacitor/assets generate --android"
   },
   "eslintConfig": {
     "extends": [
@@ -86,6 +92,7 @@
     ]
   },
   "devDependencies": {
+    "@capacitor/assets": "^2.0.4",
     "@capacitor/cli": "4.7.0",
     "eslint": "8.22.0",
     "eslint-config-react-app": "^7.0.1",
