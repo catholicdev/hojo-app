@@ -62,7 +62,9 @@
     "typecheck": "tsc --project ./tsconfig.json --noEmit",
     "run:ios": "ionic capacitor run ios --target 7F096401-B38B-4620-94DC-92B6F6FD01E5",
     "build:android": "ionic capacitor build android",
-    "sync:android": "ionic capacitor sync android"
+    "sync:android": "ionic capacitor sync android",
+    "gen:ios": "npx @capacitor/assets generate --ios",
+    "gen:android": "npx @capacitor/assets generate --android"
   },
   "eslintConfig": {
     "extends": [
