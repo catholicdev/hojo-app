@@ -40,7 +40,7 @@ export const PrepareApp = ({ children }: Props) => {
     loadToken()
       .catch((err) => console.log(err))
       .finally(() => setLoaded(true))
-  }, [push, replace])
+  }, [push, replace, dispatch])
 
   return <Loading loading={!loaded}>{children}</Loading>
 }
