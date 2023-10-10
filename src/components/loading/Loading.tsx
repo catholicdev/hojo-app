@@ -1,21 +1,28 @@
-import { IonContent, IonSpinner } from '@ionic/react'
 import React from 'react'
+import { IonSpinner } from '@ionic/react'
+
+import styles from './Loading.module.scss'
+import { useSelector } from 'react-redux'
+import { selectLoading } from '@providers/app'
 
 interface Props {
   loading?: boolean
   children: JSX.Element
+  type?: 'blur' | 'full'
 }
+
 const LoadingComp = ({ loading, children }: Props) => {
-  if (loading) {
-    return (
-      <IonContent>
-        <div className="ion-text-center">
-          <IonSpinner name="dots" />
-          <p>Loading...</p>
+  const isLoading = useSelector(selectLoading)
+  return (
+    <>
+      {(loading || isLoading) && (
+        <div className={styles.backdrop}>
+          <IonSpinner />
         </div>
-      </IonContent>
-    )
-  } else return children
+      )}
+      {children}
+    </>
+  )
 }
 
 export const Loading = React.memo(LoadingComp)
