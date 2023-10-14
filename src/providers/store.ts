@@ -4,12 +4,14 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import { api } from '@api'
 import { registrationReducer } from '@providers/registration'
 import { userInfoReducer } from '@providers/userInfo'
+import { appMetadataReducer } from '@providers/app'
 
 export const store = configureStore({
   reducer: combineReducers({
     [api.reducerPath]: api.reducer,
     registration: registrationReducer,
     userInfo: userInfoReducer,
+    app: appMetadataReducer,
   }),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
